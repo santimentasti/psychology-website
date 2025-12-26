@@ -6,9 +6,14 @@ import './Header.css'
 
 const SCROLL_THRESHOLD = 50
 
+interface NavLink {
+  href: string
+  label: string
+}
+
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
+  const [isScrolled, setIsScrolled] = useState<boolean>(false)
 
   useEffect(() => {
     const handleScroll = debounce(() => {
@@ -27,7 +32,7 @@ const Header = () => {
     setIsMenuOpen(false)
   }, [])
 
-  const navLinks = [
+  const navLinks: NavLink[] = [
     { href: '#inicio', label: 'Inicio' },
     { href: '#sobre-mi', label: 'Sobre mí' },
     { href: '#servicios', label: 'Servicios' },

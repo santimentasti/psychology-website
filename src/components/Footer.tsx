@@ -1,12 +1,22 @@
 import { Brain, Mail, Phone, MapPin, Instagram, Linkedin, Heart } from 'lucide-react'
-import { CONTACT_INFO } from '../constants/mockData'
+import { CONTACT_INFO, PROFESSIONAL_INFO } from '../constants/mockData'
 import { getCurrentYear, formatPhoneNumber } from '../utils/helpers'
 import './Footer.css'
+
+interface FooterLink {
+  label: string
+  href: string
+}
+
+interface FooterLinks {
+  servicios: FooterLink[]
+  recursos: FooterLink[]
+}
 
 const Footer = () => {
   const currentYear = getCurrentYear()
 
-  const footerLinks = {
+  const footerLinks: FooterLinks = {
     servicios: [
       { label: 'Terapia Individual', href: '#servicios' },
       { label: 'Terapia de Pareja', href: '#servicios' },
@@ -30,28 +40,32 @@ const Footer = () => {
               <span>{CONTACT_INFO.psychologistName}</span>
             </div>
             <p className="footer-description">
-              Psicóloga clínica especializada en terapia cognitivo-conductual. 
-              Más de 10 años ayudando a personas a alcanzar su bienestar emocional.
+              Psicólogo clínico especializado en {PROFESSIONAL_INFO.specialization.toLowerCase()}. 
+              {PROFESSIONAL_INFO.yearsOfExperience} años ayudando a personas a alcanzar su bienestar emocional.
             </p>
             <div className="footer-social">
-              <a 
-                href={CONTACT_INFO.socialMedia.instagram.url}
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="social-icon-link"
-                aria-label={`Síguenos en Instagram: ${CONTACT_INFO.socialMedia.instagram.handle}`}
-              >
-                <Instagram size={20} />
-              </a>
-              <a 
-                href={CONTACT_INFO.socialMedia.linkedin.url}
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="social-icon-link"
-                aria-label={`Conéctate en LinkedIn: ${CONTACT_INFO.socialMedia.linkedin.handle}`}
-              >
-                <Linkedin size={20} />
-              </a>
+              {CONTACT_INFO.socialMedia.instagram?.url && (
+                <a 
+                  href={CONTACT_INFO.socialMedia.instagram.url}
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="social-icon-link"
+                  aria-label={`Sígueme en Instagram: ${CONTACT_INFO.socialMedia.instagram.handle}`}
+                >
+                  <Instagram size={20} />
+                </a>
+              )}
+              {CONTACT_INFO.socialMedia.linkedin?.url && (
+                <a 
+                  href={CONTACT_INFO.socialMedia.linkedin.url}
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="social-icon-link"
+                  aria-label={`Conéctate en LinkedIn: ${CONTACT_INFO.socialMedia.linkedin.handle}`}
+                >
+                  <Linkedin size={20} />
+                </a>
+              )}
             </div>
           </div>
 
@@ -80,22 +94,28 @@ const Footer = () => {
           <div className="footer-col">
             <h4 className="footer-title">Contacto</h4>
             <ul className="footer-contact">
-              <li>
-                <Phone size={18} aria-hidden="true" />
-                <a href={`tel:${CONTACT_INFO.phone}`}>
-                  {formatPhoneNumber(CONTACT_INFO.phone)}
-                </a>
-              </li>
-              <li>
-                <Mail size={18} aria-hidden="true" />
-                <a href={`mailto:${CONTACT_INFO.email}`}>
-                  {CONTACT_INFO.email}
-                </a>
-              </li>
-              <li>
-                <MapPin size={18} aria-hidden="true" />
-                <span>{CONTACT_INFO.addressShort}</span>
-              </li>
+              {CONTACT_INFO.phone && (
+                <li>
+                  <Phone size={18} aria-hidden="true" />
+                  <a href={`tel:${CONTACT_INFO.phone}`}>
+                    {formatPhoneNumber(CONTACT_INFO.phone)}
+                  </a>
+                </li>
+              )}
+              {CONTACT_INFO.email && (
+                <li>
+                  <Mail size={18} aria-hidden="true" />
+                  <a href={`mailto:${CONTACT_INFO.email}`}>
+                    {CONTACT_INFO.email}
+                  </a>
+                </li>
+              )}
+              {CONTACT_INFO.addressShort && (
+                <li>
+                  <MapPin size={18} aria-hidden="true" />
+                  <span>{CONTACT_INFO.addressShort}</span>
+                </li>
+              )}
             </ul>
           </div>
         </div>

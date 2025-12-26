@@ -1,24 +1,32 @@
-import { Award, BookOpen, Heart, Users } from 'lucide-react'
-import { CONTACT_INFO, PROFESSIONAL_INFO } from '../constants/mockData'
+import { Award, BookOpen, Heart, Users, Globe, GraduationCap } from 'lucide-react'
+import { CONTACT_INFO, PROFESSIONAL_INFO, PATIENT_LOCATIONS } from '../constants/mockData'
 import './About.css'
 
 const ICON_SIZE = 32
 
+interface QualificationCard {
+  icon: React.ReactNode
+  title: string
+  items: string[]
+}
+
 const About = () => {
-  const qualifications = [
+  const qualifications: QualificationCard[] = [
     {
-      icon: <Award size={ICON_SIZE} />,
-      title: 'Certificaciones',
-      items: PROFESSIONAL_INFO.education
+      icon: <GraduationCap size={ICON_SIZE} />,
+      title: 'Formación',
+      items: [
+        `Licenciatura en Psicología - ${PROFESSIONAL_INFO.university} (${PROFESSIONAL_INFO.graduationYear})`,
+        `Especialización en ${PROFESSIONAL_INFO.specialization}`
+      ]
     },
     {
       icon: <BookOpen size={ICON_SIZE} />,
-      title: 'Especialidades',
+      title: 'Especialidad',
       items: [
-        'Ansiedad y depresión',
-        'Terapia de pareja',
-        'Desarrollo personal',
-        'Manejo del estrés'
+        PROFESSIONAL_INFO.specialization,
+        'Terapia Individual y de Pareja',
+        'Manejo de Ansiedad y Depresión'
       ]
     },
     {
@@ -34,9 +42,22 @@ const About = () => {
       icon: <Users size={ICON_SIZE} />,
       title: 'Experiencia',
       items: [
-        `${PROFESSIONAL_INFO.yearsOfExperience}+ años de práctica clínica`,
-        'Trabajo con adultos y adolescentes',
-        'Consulta presencial y en línea'
+        `${PROFESSIONAL_INFO.yearsOfExperience} años de práctica clínica`,
+        `Más de ${PROFESSIONAL_INFO.patientsServed} pacientes atendidos`,
+        `Más de ${PROFESSIONAL_INFO.sessionsCompleted.toLocaleString('es-AR')} sesiones realizadas`
+      ]
+    },
+    {
+      icon: <Globe size={ICON_SIZE} />,
+      title: 'Idiomas',
+      items: PROFESSIONAL_INFO.languages
+    },
+    {
+      icon: <Award size={ICON_SIZE} />,
+      title: 'Alcance',
+      items: [
+        'Atiendo pacientes en:',
+        ...PATIENT_LOCATIONS
       ]
     }
   ]
@@ -49,16 +70,21 @@ const About = () => {
         <div className="about-intro">
           <div className="about-text">
             <p>
-              Soy <strong>{CONTACT_INFO.psychologistName}</strong>, psicóloga clínica con más de una década 
-              de experiencia ayudando a personas a superar sus desafíos emocionales y mejorar su 
+              Soy <strong>{CONTACT_INFO.psychologistName}</strong>, psicólogo clínico licenciado en {PROFESSIONAL_INFO.university} ({PROFESSIONAL_INFO.graduationYear}) 
+              con {PROFESSIONAL_INFO.yearsOfExperience} años de experiencia ayudando a personas a superar sus desafíos emocionales y mejorar su 
               calidad de vida. Mi pasión es proporcionar un espacio seguro donde puedas explorar 
               tus pensamientos, sentimientos y comportamientos sin juicio.
             </p>
             <p>
               Mi enfoque terapéutico se basa en la <strong>{PROFESSIONAL_INFO.specialization}</strong>, 
-              una de las modalidades más efectivas y respaldadas científicamente. Trabajo de manera 
-              colaborativa contigo para identificar patrones de pensamiento y comportamiento que 
-              pueden estar causando malestar, y desarrollamos juntos estrategias prácticas para el cambio.
+              una de las modalidades más efectivas y respaldadas científicamente. He atendido a más de {PROFESSIONAL_INFO.patientsServed} pacientes 
+              y realizado más de {PROFESSIONAL_INFO.sessionsCompleted.toLocaleString('es-AR')} sesiones, trabajando con personas de diferentes partes del mundo, 
+              incluyendo Argentina, Latinoamérica, Canadá, Estados Unidos y Europa.
+            </p>
+            <p>
+              Ofrezco terapia tanto en <strong>Español</strong> como en <strong>Inglés</strong>, 
+              y trabajo de manera colaborativa contigo para identificar patrones de pensamiento y comportamiento que 
+              pueden estar causando malestar, desarrollando juntos estrategias prácticas para el cambio.
             </p>
             <p>
               Creo firmemente que cada persona tiene el potencial para crecer y sanar. Mi objetivo 
@@ -70,7 +96,7 @@ const About = () => {
         </div>
 
         <div className="qualifications-grid">
-          {qualifications.map((qual, index) => (
+          {qualifications.map((qual) => (
             <article key={qual.title} className="qualification-card card fade-in">
               <div className="qualification-icon" aria-hidden="true">
                 {qual.icon}

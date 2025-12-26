@@ -5,8 +5,8 @@ import { openWhatsApp } from '../utils/helpers'
 import './Calendar.css'
 
 const Calendar = () => {
-  const [selectedDate, setSelectedDate] = useState('')
-  const [selectedTime, setSelectedTime] = useState('')
+  const [selectedDate, setSelectedDate] = useState<string>('')
+  const [selectedTime, setSelectedTime] = useState<string>('')
 
   const handleBooking = useCallback(() => {
     if (!selectedDate || !selectedTime) {
@@ -14,14 +14,18 @@ const Calendar = () => {
       return
     }
 
-    const message = `Hola, me gustaría agendar una cita para el día ${selectedDate} a las ${selectedTime}.`
-    openWhatsApp(CONTACT_INFO.phone, message)
+    if (CONTACT_INFO.phone) {
+      const message = `Hola, me gustaría agendar una cita para el día ${selectedDate} a las ${selectedTime}.`
+      openWhatsApp(CONTACT_INFO.phone, message)
+    }
   }, [selectedDate, selectedTime])
 
-  const handleDayChange = useCallback((day) => {
+  const handleDayChange = useCallback((day: string) => {
     setSelectedDate(day)
     setSelectedTime('') // Reset time when day changes
   }, [])
+
+  const availableTimes = selectedDate ? (AVAILABLE_SCHEDULE[selectedDate] || []) : []
 
   return (
     <section id="agenda" className="section calendar-section">
@@ -93,14 +97,14 @@ const Calendar = () => {
               </select>
             </div>
 
-            {selectedDate && (
+            {selectedDate && availableTimes.length > 0 && (
               <div className="form-group">
                 <label htmlFor="time-select">
                   <Clock size={20} />
                   Horario disponible
                 </label>
                 <div className="time-slots" role="radiogroup" aria-label="Selecciona un horario">
-                  {AVAILABLE_SCHEDULE[selectedDate].map((time) => (
+                  {availableTimes.map((time) => (
                     <button
                       key={time}
                       type="button"
@@ -119,7 +123,7 @@ const Calendar = () => {
             <button 
               className="btn btn-whatsapp booking-btn"
               onClick={handleBooking}
-              disabled={!selectedDate || !selectedTime}
+              disabled={!selectedDate || !selectedTime || !CONTACT_INFO.phone}
             >
               <MessageCircle size={20} />
               Confirmar por WhatsApp

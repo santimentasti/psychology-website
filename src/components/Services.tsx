@@ -1,12 +1,13 @@
+import { ReactNode } from 'react'
 import { Brain, Users, HeartHandshake, Sparkles, ShieldCheck, Smile } from 'lucide-react'
-import { SERVICES_DATA, FIRST_CONSULTATION_PRICE, CONTACT_INFO } from '../constants/mockData'
+import { SERVICES_DATA, FIRST_CONSULTATION_PRICE, Service } from '../constants/mockData'
 import { formatCurrency } from '../utils/helpers'
 import './Services.css'
 
 const ICON_SIZE = 40
 
 // Map service IDs to their corresponding icons
-const serviceIcons = {
+const serviceIcons: Record<string, ReactNode> = {
   'terapia-individual': <Brain size={ICON_SIZE} />,
   'terapia-pareja': <Users size={ICON_SIZE} />,
   'terapia-familiar': <HeartHandshake size={ICON_SIZE} />,
@@ -15,10 +16,15 @@ const serviceIcons = {
   'tratamiento-depresion': <Smile size={ICON_SIZE} />
 }
 
+interface ServiceWithIcon extends Service {
+  icon: ReactNode
+  formattedPrice: string
+}
+
 const Services = () => {
-  const services = SERVICES_DATA.map(service => ({
+  const services: ServiceWithIcon[] = SERVICES_DATA.map(service => ({
     ...service,
-    icon: serviceIcons[service.id],
+    icon: serviceIcons[service.id] || <Brain size={ICON_SIZE} />,
     formattedPrice: formatCurrency(service.price, service.currency)
   }))
 
@@ -58,11 +64,11 @@ const Services = () => {
           <div className="modalities">
             <div className="modality">
               <h4>📍 Presencial</h4>
-              <p>Consultorio en Polanco, CDMX</p>
+              <p>Consulta en tu ubicación o videollamada</p>
             </div>
             <div className="modality">
               <h4>💻 En Línea</h4>
-              <p>Sesiones por videollamada segura</p>
+              <p>Sesiones por videollamada segura - Atiendo en múltiples países</p>
             </div>
           </div>
           <p className="note-text">

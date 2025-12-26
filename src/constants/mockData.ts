@@ -1,48 +1,92 @@
 // ============================================
-// MOCK DATA - Replace with real data before production
+// PROFESSIONAL DATA - Matías Munno
 // ============================================
 
-// Contact Information - UPDATE THESE VALUES
-export const CONTACT_INFO = {
-  psychologistName: 'Dra. María González',
-  phone: '+525512345678',
-  email: 'contacto@mariagonzalez.com',
-  address: 'Av. Presidente Masaryk 111, Polanco, CDMX',
-  addressShort: 'Polanco, CDMX',
+export interface ContactInfo {
+  psychologistName: string
+  phone: string
+  email: string
+  address?: string
+  addressShort?: string
+  socialMedia: {
+    instagram?: {
+      url: string
+      handle: string
+    }
+    linkedin?: {
+      url: string
+      handle: string
+    }
+  }
+}
+
+export interface ProfessionalInfo {
+  graduationYear: number
+  university: string
+  yearsOfExperience: number
+  patientsServed: number
+  sessionsCompleted: number
+  satisfactionRate?: number
+  specialization: string
+  languages: string[]
+  education: string[]
+}
+
+export interface Service {
+  id: string
+  title: string
+  description: string
+  features: string[]
+  price: number
+  currency: string
+}
+
+export interface FAQ {
+  question: string
+  answer: string
+}
+
+// Contact Information
+export const CONTACT_INFO: ContactInfo = {
+  psychologistName: 'Lic. Matías Munno',
+  phone: '', // TODO: Add phone number
+  email: '', // TODO: Add email
   socialMedia: {
     instagram: {
-      url: 'https://instagram.com',
-      handle: '@dra.mariagonzalez'
+      url: '', // TODO: Add Instagram URL
+      handle: '' // TODO: Add Instagram handle
     },
     linkedin: {
-      url: 'https://linkedin.com',
-      handle: 'María González'
+      url: '', // TODO: Add LinkedIn URL
+      handle: 'Matías Munno'
     }
   }
 }
 
 // Professional Information
-export const PROFESSIONAL_INFO = {
-  yearsOfExperience: 10,
+export const PROFESSIONAL_INFO: ProfessionalInfo = {
+  graduationYear: 2019,
+  university: 'Universidad de Buenos Aires',
+  yearsOfExperience: 7,
   patientsServed: 500,
-  satisfactionRate: 95,
-  specialization: 'Terapia Cognitivo-Conductual (TCC)',
+  sessionsCompleted: 4000,
+  specialization: 'Terapia Cognitivo Conductual',
+  languages: ['Español', 'Inglés'],
   education: [
-    'Licenciatura en Psicología - UNAM',
-    'Maestría en Psicología Clínica',
-    'Certificación en TCC (Terapia Cognitivo-Conductual)'
+    'Licenciatura en Psicología - Universidad de Buenos Aires (2019)',
+    'Especialización en Terapia Cognitivo Conductual'
   ]
 }
 
 // Services Data
-export const SERVICES_DATA = [
+export const SERVICES_DATA: Service[] = [
   {
     id: 'terapia-individual',
     title: 'Terapia Individual',
     description: 'Sesiones personalizadas para trabajar en tus desafíos emocionales, ansiedad, depresión, o cualquier situación que afecte tu bienestar.',
     features: ['Sesiones de 50 minutos', 'Plan personalizado', 'Seguimiento continuo'],
     price: 800,
-    currency: 'MXN'
+    currency: 'ARS'
   },
   {
     id: 'terapia-pareja',
@@ -50,7 +94,7 @@ export const SERVICES_DATA = [
     description: 'Fortalece tu relación trabajando en comunicación, resolución de conflictos y construcción de vínculos más saludables.',
     features: ['Sesiones de 60 minutos', 'Ejercicios prácticos', 'Estrategias de comunicación'],
     price: 1200,
-    currency: 'MXN'
+    currency: 'ARS'
   },
   {
     id: 'terapia-familiar',
@@ -58,7 +102,7 @@ export const SERVICES_DATA = [
     description: 'Mejora la dinámica familiar y resuelve conflictos mediante comunicación efectiva y comprensión mutua.',
     features: ['Sesiones de 60 minutos', 'Todos los miembros', 'Técnicas de mediación'],
     price: 1500,
-    currency: 'MXN'
+    currency: 'ARS'
   },
   {
     id: 'desarrollo-personal',
@@ -66,7 +110,7 @@ export const SERVICES_DATA = [
     description: 'Alcanza tu máximo potencial trabajando en autoestima, confianza, establecimiento de metas y crecimiento personal.',
     features: ['Objetivos claros', 'Herramientas prácticas', 'Acompañamiento'],
     price: 800,
-    currency: 'MXN'
+    currency: 'ARS'
   },
   {
     id: 'manejo-ansiedad',
@@ -74,7 +118,7 @@ export const SERVICES_DATA = [
     description: 'Aprende técnicas efectivas para controlar la ansiedad, el estrés y los ataques de pánico mediante TCC.',
     features: ['Técnicas de relajación', 'Estrategias de afrontamiento', 'Exposición gradual'],
     price: 800,
-    currency: 'MXN'
+    currency: 'ARS'
   },
   {
     id: 'tratamiento-depresion',
@@ -82,12 +126,12 @@ export const SERVICES_DATA = [
     description: 'Trabaja en superar la depresión mediante técnicas cognitivo-conductuales y desarrollo de habilidades de afrontamiento.',
     features: ['Terapia basada en evidencia', 'Activación conductual', 'Reestructuración cognitiva'],
     price: 800,
-    currency: 'MXN'
+    currency: 'ARS'
   }
 ]
 
 // Available Schedule - Days and time slots
-export const AVAILABLE_SCHEDULE = {
+export const AVAILABLE_SCHEDULE: Record<string, string[]> = {
   'Lunes': ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00', '17:00'],
   'Martes': ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00', '17:00'],
   'Miércoles': ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00'],
@@ -99,18 +143,18 @@ export const AVAILABLE_SCHEDULE = {
 // First Consultation Price
 export const FIRST_CONSULTATION_PRICE = {
   amount: 700,
-  currency: 'MXN'
+  currency: 'ARS'
 }
 
 // FAQ Data
-export const FAQ_DATA = [
+export const FAQ_DATA: FAQ[] = [
   {
     question: '¿Cuánto dura una sesión?',
     answer: 'Las sesiones individuales duran 50 minutos y las de pareja/familia 60 minutos.'
   },
   {
     question: '¿Ofrecen sesiones en línea?',
-    answer: 'Sí, ofrezco sesiones tanto presenciales como por videollamada segura.'
+    answer: 'Sí, ofrezco sesiones tanto presenciales como por videollamada segura. Atiendo pacientes en Argentina, Latinoamérica, Canadá, Estados Unidos y Europa.'
   },
   {
     question: '¿Cómo agendar la primera cita?',
@@ -124,4 +168,12 @@ export const HERO_IMAGE_URL = 'https://images.unsplash.com/photo-1573497019940-1
 // Cancellation Policy
 export const CANCELLATION_POLICY = 'Si necesitas cancelar o reprogramar tu cita, por favor avísanos con al menos 24 horas de anticipación.'
 
+// Patient Locations
+export const PATIENT_LOCATIONS = [
+  'Argentina',
+  'Latinoamérica',
+  'Canadá',
+  'Estados Unidos',
+  'Europa'
+]
 

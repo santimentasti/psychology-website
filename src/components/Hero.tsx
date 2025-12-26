@@ -4,12 +4,14 @@ import { openWhatsApp, smoothScrollTo } from '../utils/helpers'
 import './Hero.css'
 
 const Hero = () => {
-  const handleWhatsAppClick = () => {
+  const handleWhatsAppClick = (): void => {
     const message = 'Hola, me gustaría solicitar información sobre los servicios de psicología.'
-    openWhatsApp(CONTACT_INFO.phone, message)
+    if (CONTACT_INFO.phone) {
+      openWhatsApp(CONTACT_INFO.phone, message)
+    }
   }
 
-  const handleScheduleClick = () => {
+  const handleScheduleClick = (): void => {
     smoothScrollTo('agenda')
   }
 
@@ -22,8 +24,8 @@ const Hero = () => {
             Tu bienestar emocional es mi prioridad
           </h1>
           <p className="hero-subtitle">
-            Psicóloga clínica especializada en terapia cognitivo-conductual, 
-            con más de 10 años de experiencia ayudando a personas a superar 
+            Psicólogo clínico especializado en {PROFESSIONAL_INFO.specialization.toLowerCase()}, 
+            con {PROFESSIONAL_INFO.yearsOfExperience} años de experiencia ayudando a personas a superar 
             sus desafíos emocionales y alcanzar una vida plena.
           </p>
           <div className="hero-buttons">
@@ -34,17 +36,19 @@ const Hero = () => {
               <Calendar size={20} />
               Agendar Cita
             </button>
-            <button 
-              className="btn btn-whatsapp"
-              onClick={handleWhatsAppClick}
-            >
-              <MessageCircle size={20} />
-              WhatsApp
-            </button>
+            {CONTACT_INFO.phone && (
+              <button 
+                className="btn btn-whatsapp"
+                onClick={handleWhatsAppClick}
+              >
+                <MessageCircle size={20} />
+                WhatsApp
+              </button>
+            )}
           </div>
           <div className="hero-stats">
             <div className="stat">
-              <span className="stat-number">{PROFESSIONAL_INFO.yearsOfExperience}+</span>
+              <span className="stat-number">{PROFESSIONAL_INFO.yearsOfExperience}</span>
               <span className="stat-label">Años de experiencia</span>
             </div>
             <div className="stat">
@@ -52,8 +56,8 @@ const Hero = () => {
               <span className="stat-label">Pacientes atendidos</span>
             </div>
             <div className="stat">
-              <span className="stat-number">{PROFESSIONAL_INFO.satisfactionRate}%</span>
-              <span className="stat-label">Satisfacción</span>
+              <span className="stat-number">{PROFESSIONAL_INFO.sessionsCompleted.toLocaleString('es-AR')}+</span>
+              <span className="stat-label">Sesiones realizadas</span>
             </div>
           </div>
         </div>
@@ -61,13 +65,13 @@ const Hero = () => {
           <div className="hero-image">
             <img 
               src={HERO_IMAGE_URL} 
-              alt={`${CONTACT_INFO.psychologistName} - Psicóloga profesional`}
+              alt={`${CONTACT_INFO.psychologistName} - Psicólogo profesional`}
               loading="lazy"
             />
           </div>
           <div className="hero-badge" role="img" aria-label="Certificación profesional">
             <span className="badge-icon" aria-hidden="true">✓</span>
-            <span className="badge-text">Certificada</span>
+            <span className="badge-text">Licenciado</span>
           </div>
         </div>
       </div>
