@@ -1,25 +1,29 @@
 {
-  "name": "psychology-practice-website",
-  "private": true,
+  "name": "psychology-website-monorepo",
   "version": "1.0.0",
-  "type": "module",
+  "private": true,
+  "description": "Monorepo for Psychology Practice Website - Frontend and Backend",
+  "workspaces": [
+    "frontend",
+    "backend",
+    "shared"
+  ],
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "dev": "npm run dev --workspace=frontend",
+    "dev:backend": "npm run dev --workspace=backend",
+    "dev:all": "npm run dev --workspace=frontend & npm run dev --workspace=backend",
+    "build": "npm run build --workspaces",
+    "build:frontend": "npm run build --workspace=frontend",
+    "build:backend": "npm run build --workspace=backend",
+    "install:all": "npm install",
+    "type-check": "npm run type-check --workspaces"
   },
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-calendar": "^4.6.1",
-    "lucide-react": "^0.294.0"
-  },
-  "devDependencies": {
-    "@types/react": "^18.2.37",
-    "@types/react-dom": "^18.2.15",
-    "@vitejs/plugin-react": "^4.2.0",
-    "typescript": "^5.2.2",
-    "vite": "^5.0.0"
+  "keywords": ["monorepo", "react", "express", "typescript"],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
   }
 }
 

@@ -1,6 +1,13 @@
-# 🧠 Psychology Practice Website
+# 🧠 Psychology Practice Website - Monorepo
 
 Una página web moderna y profesional para consultorios de psicología, diseñada para mostrar servicios, agendar citas y facilitar el contacto con pacientes.
+
+## 📁 Estructura del Proyecto
+
+Este es un monorepo que contiene:
+
+- **`frontend/`** - Aplicación React + TypeScript + Vite
+- **`backend/`** - API Express.js + TypeScript
 
 ## ✨ Características
 
@@ -16,101 +23,124 @@ Una página web moderna y profesional para consultorios de psicología, diseñad
 
 ### Requisitos previos
 - Node.js (versión 16 o superior)
-- npm o yarn
+- npm (versión 8 o superior)
 
 ### Instalación
 
-1. Instala las dependencias:
+1. Instala todas las dependencias del monorepo:
 ```bash
 npm install
 ```
 
-2. Inicia el servidor de desarrollo:
+Esto instalará las dependencias tanto del frontend como del backend.
+
+### Desarrollo
+
+#### Frontend solamente
 ```bash
 npm run dev
+# o
+npm run dev --workspace=frontend
 ```
 
-3. Abre tu navegador en `http://localhost:5173`
+#### Backend solamente
+```bash
+npm run dev:backend
+# o
+npm run dev --workspace=backend
+```
+
+#### Frontend y Backend simultáneamente
+```bash
+npm run dev:all
+```
 
 ### Build para producción
 
+#### Build completo
 ```bash
 npm run build
 ```
 
-Los archivos optimizados se generarán en la carpeta `dist/`
-
-## 🎨 Personalización
-
-### ⚡ Forma Rápida (Recomendada)
-
-**Todo en un solo archivo**: Edita `src/constants/mockData.js`
-
-1. **Información Personal**:
-   - Cambia `CONTACT_INFO` (nombre, teléfono, email, dirección)
-   - Actualiza `PROFESSIONAL_INFO` (años de experiencia, certificaciones)
-
-2. **Servicios y Precios**:
-   - Modifica el array `SERVICES_DATA`
-
-3. **Horarios Disponibles**:
-   - Edita `AVAILABLE_SCHEDULE`
-
-4. **Imagen del Hero**:
-   - Actualiza `HERO_IMAGE_URL` con tu foto profesional
-
-5. **Preguntas Frecuentes**:
-   - Edita `FAQ_DATA`
-
-### 🎨 Personalización Visual
-
-**Colores**: Modifica las variables CSS en `src/index.css`:
-```css
-:root {
-  --primary-color: #4a90a4;  /* Color principal */
-  --secondary-color: #5eb3cc; /* Color secundario */
-  --accent-color: #90c9db;    /* Color de acento */
-}
+#### Build individual
+```bash
+npm run build:frontend
+npm run build:backend
 ```
 
-### 📋 Best Practices Implementadas
+## 📂 Estructura de Carpetas
 
-Este proyecto sigue las mejores prácticas de desarrollo:
-- ✅ Datos centralizados en `constants/mockData.js`
-- ✅ Funciones utilitarias reutilizables en `utils/helpers.js`
-- ✅ Optimización de performance con React hooks
-- ✅ Accesibilidad (ARIA labels, semántica HTML)
-- ✅ No magic numbers
-- ✅ Código limpio y mantenible
-
-**Ver más**: Consulta `BEST_PRACTICES.md` para detalles completos.
-
-## 📱 Secciones
-
-1. **Inicio**: Landing con foto y botones de acción
-2. **Sobre mí**: Biografía, calificaciones y enfoque terapéutico
-3. **Servicios**: Terapia individual, pareja, familia, desarrollo personal, etc.
-4. **Agenda**: Sistema de selección de días y horarios
-5. **Contacto**: WhatsApp, teléfono, email y redes sociales
+```
+psychology-website/
+├── frontend/          # Aplicación React
+│   ├── src/
+│   ├── public/
+│   ├── package.json
+│   └── vite.config.ts
+├── backend/           # API Express.js
+│   ├── src/
+│   │   └── index.ts
+│   ├── package.json
+│   └── tsconfig.json
+└── package.json       # Root package.json (workspaces)
+```
 
 ## 🎯 Tecnologías
 
+### Frontend
 - React 18
+- TypeScript
 - Vite
 - CSS3 (sin frameworks adicionales)
 - Lucide React (iconos)
 
-## 📝 Sugerencias basadas en sitios similares
+### Backend
+- Express.js
+- TypeScript
+- CORS
+- dotenv
 
-Esta página está inspirada en las mejores prácticas de sitios web de psicología profesional:
+## 🔧 Configuración del Backend
 
-1. **Diseño calmo y profesional**: Colores azules/verdes que transmiten tranquilidad
-2. **Información clara**: Servicios, horarios y precios accesibles
-3. **Contacto fácil**: WhatsApp integrado para comunicación inmediata
-4. **Credenciales visibles**: Certificaciones y experiencia destacadas
-5. **Sistema de citas**: Calendario interactivo para mejor experiencia
-6. **Responsive**: Funciona perfectamente en todos los dispositivos
-7. **Confidencialidad**: Notas sobre privacidad y ética profesional
+1. Copia el archivo de ejemplo de variables de entorno:
+```bash
+cd backend
+cp .env.example .env
+```
+
+2. Edita `.env` con tus configuraciones:
+```env
+PORT=3000
+NODE_ENV=development
+```
+
+## 📝 Scripts Disponibles
+
+### Root (Monorepo)
+- `npm run dev` - Inicia el frontend en modo desarrollo
+- `npm run dev:backend` - Inicia el backend en modo desarrollo
+- `npm run dev:all` - Inicia frontend y backend simultáneamente
+- `npm run build` - Build de todos los workspaces
+- `npm run install:all` - Instala dependencias de todos los workspaces
+
+### Frontend
+- `npm run dev` - Servidor de desarrollo Vite
+- `npm run build` - Build para producción
+- `npm run preview` - Preview del build de producción
+
+### Backend
+- `npm run dev` - Servidor de desarrollo con hot reload (tsx)
+- `npm run build` - Compila TypeScript a JavaScript
+- `npm run start` - Inicia el servidor en producción
+- `npm run type-check` - Verifica tipos sin compilar
+
+## 🎨 Personalización
+
+### Frontend
+Ver la documentación en `frontend/README.md` (si existe) o consulta `BEST_PRACTICES.md` para detalles sobre personalización.
+
+### Backend
+El backend está configurado con Express.js y TypeScript. Puedes agregar rutas, controladores, servicios y modelos según tus necesidades.
 
 ## 📄 Licencia
 
@@ -123,4 +153,3 @@ Para preguntas o soporte, contacta al desarrollador.
 ---
 
 **Nota**: Esta es una maqueta/mockup para presentación. Los números de contacto y datos son de ejemplo y deben ser reemplazados con información real antes del lanzamiento.
-

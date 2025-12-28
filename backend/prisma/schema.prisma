@@ -1,0 +1,135 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Patient {
+  id            String        @id @default(uuid())
+  email         String        @unique
+  password      String
+  firstName     String
+  lastName      String
+  phone         String
+  dateOfBirth   DateTime?
+  address       String?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  
+  appointments  Appointment[]
+  payments      Payment[]
+  documents     Document[]
+  
+  @@map("patients")
+}
+
+model Service {
+  id            String        @id @default(uuid())
+  name          String
+  description   String
+  duration      Int           // minutes
+  priceUSD      Int           // cents
+  priceEUR      Int
+  priceARS      Int
+  priceMXN      Int
+  isActive      Boolean       @default(true)
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  
+  appointments  Appointment[]
+  payments      Payment[]
+  
+  @@map("services")
+}
+
+model Appointment {
+  id            String              @id @default(uuid())
+  patientId     String
+  serviceId     String
+  dateTime      DateTime
+  status        AppointmentStatus   @default(PENDING)
+  notes         String?
+  createdAt     DateTime            @default(now())
+  updatedAt     DateTime            @updatedAt
+  
+  patient       Patient             @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  service       Service             @relation(fields: [serviceId], references: [id])
+  payment       Payment?
+  
+  @@map("appointments")
+}
+
+enum AppointmentStatus {
+  PENDING
+  CONFIRMED
+  COMPLETED
+  CANCELLED
+  NO_SHOW
+}
+
+model Payment {
+  id                String        @id @default(uuid())
+  patientId         String
+  appointmentId     String?       @unique
+  serviceId         String
+  amount            Int           // cents
+  currency          String
+  status            PaymentStatus @default(PENDING)
+  paymentMethod     PaymentMethod
+  stripePaymentId   String?
+  paypalOrderId     String?
+  packageType       String?       // monthly-4, monthly-8, prepaid-10
+  sessionsRemaining Int?
+  createdAt         DateTime      @default(now())
+  updatedAt         DateTime      @updatedAt
+  
+  patient           Patient       @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  appointment       Appointment?  @relation(fields: [appointmentId], references: [id], onDelete: SetNull)
+  service           Service       @relation(fields: [serviceId], references: [id])
+  
+  @@map("payments")
+}
+
+enum PaymentStatus {
+  PENDING
+  COMPLETED
+  FAILED
+  REFUNDED
+}
+
+enum PaymentMethod {
+  STRIPE
+  PAYPAL
+}
+
+model Document {
+  id            String        @id @default(uuid())
+  patientId     String
+  fileName      String
+  fileUrl       String
+  fileType      String
+  uploadedAt    DateTime      @default(now())
+  
+  patient       Patient       @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  
+  @@map("documents")
+}
+
+model AvailableSlot {
+  id            String        @id @default(uuid())
+  dayOfWeek     Int           // 0-6 (Sunday-Saturday)
+  startTime     String        // "09:00"
+  endTime       String        // "10:00"
+  isActive      Boolean       @default(true)
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  
+  @@map("available_slots")
+}
+

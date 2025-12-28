@@ -10,7 +10,6 @@ const ICON_SIZE = 40
 const serviceIcons: Record<string, ReactNode> = {
   'terapia-individual': <Brain size={ICON_SIZE} />,
   'terapia-pareja': <Users size={ICON_SIZE} />,
-  'terapia-familiar': <HeartHandshake size={ICON_SIZE} />,
   'desarrollo-personal': <Sparkles size={ICON_SIZE} />,
   'manejo-ansiedad': <ShieldCheck size={ICON_SIZE} />,
   'tratamiento-depresion': <Smile size={ICON_SIZE} />
