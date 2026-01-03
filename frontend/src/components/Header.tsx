@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
+import { Link } from 'react-router-dom'
 import { Menu, X, Brain } from 'lucide-react'
 import { CONTACT_INFO } from '../constants/mockData'
 import { debounce } from '../utils/helpers'
@@ -43,10 +44,10 @@ const Header = () => {
   return (
     <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
       <div className="container header-container">
-        <div className="logo">
+        <Link to="/" className="logo">
           <Brain className="logo-icon" size={32} aria-hidden="true" />
           <span className="logo-text">{CONTACT_INFO.psychologistName}</span>
-        </div>
+        </Link>
 
         <nav className={`nav ${isMenuOpen ? 'open' : ''}`}>
           <ul className="nav-list">

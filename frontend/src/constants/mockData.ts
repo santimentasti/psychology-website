@@ -49,15 +49,17 @@ export interface FAQ {
 // Contact Information
 export const CONTACT_INFO: ContactInfo = {
   psychologistName: 'Lic. Matías Munno',
-  phone: '', // TODO: Add phone number
-  email: '', // TODO: Add email
+  phone: '+5491123456789', // TODO: Replace with real WhatsApp number
+  email: 'matias.munno@psychology-practice.com', // TODO: Replace with real email
+  address: 'Av. Corrientes 1234, Piso 5, Oficina 12, C1043 CABA, Buenos Aires, Argentina',
+  addressShort: 'Buenos Aires, Argentina',
   socialMedia: {
     instagram: {
-      url: '', // TODO: Add Instagram URL
-      handle: '' // TODO: Add Instagram handle
+      url: 'https://instagram.com/matiasmunno_psi', // TODO: Replace with real Instagram
+      handle: '@matiasmunno_psi'
     },
     linkedin: {
-      url: '', // TODO: Add LinkedIn URL
+      url: 'https://linkedin.com/in/matias-munno', // TODO: Replace with real LinkedIn
       handle: 'Matías Munno'
     }
   }

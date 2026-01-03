@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { Brain, Mail, Phone, MapPin, Instagram, Linkedin, Heart } from 'lucide-react'
 import { CONTACT_INFO, PROFESSIONAL_INFO } from '../constants/mockData'
 import { getCurrentYear, formatPhoneNumber } from '../utils/helpers'
@@ -127,9 +128,9 @@ const Footer = () => {
               © {currentYear} {CONTACT_INFO.psychologistName}. Todos los derechos reservados.
             </p>
             <p className="footer-legal">
-              <a href="#confidencialidad">Política de Confidencialidad</a>
+              <Link to="/privacy-policy">Política de Confidencialidad</Link>
               <span className="separator">•</span>
-              <a href="#terminos">Términos y Condiciones</a>
+              <Link to="/terms-conditions">Términos y Condiciones</Link>
             </p>
           </div>
           <p className="footer-love">
