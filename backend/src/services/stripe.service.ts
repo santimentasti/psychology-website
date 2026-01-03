@@ -1,5 +1,5 @@
 import Stripe from 'stripe';
-import { stripe } from '../config/stripe.js';
+import { stripe, isStripeConfigured } from '../config/stripe.js';
 import { logger } from '../utils/logger.js';
 
 export const stripeService = {
@@ -11,8 +11,12 @@ export const stripeService = {
     currency: string,
     metadata?: Record<string, string>
   ): Promise<Stripe.PaymentIntent> => {
+    if (!isStripeConfigured()) {
+      throw new Error('Stripe is not configured. Please set STRIPE_SECRET_KEY in environment variables.');
+    }
+
     try {
-      const paymentIntent = await stripe.paymentIntents.create({
+      const paymentIntent = await stripe!.paymentIntents.create({
         amount,
         currency: currency.toLowerCase(),
         metadata: metadata || {},
@@ -33,14 +37,18 @@ export const stripeService = {
    * Confirm a payment intent
    */
   confirmPaymentIntent: async (paymentIntentId: string): Promise<Stripe.PaymentIntent> => {
+    if (!isStripeConfigured()) {
+      throw new Error('Stripe is not configured. Please set STRIPE_SECRET_KEY in environment variables.');
+    }
+
     try {
-      const paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId);
+      const paymentIntent = await stripe!.paymentIntents.retrieve(paymentIntentId);
 
       if (paymentIntent.status === 'succeeded') {
         return paymentIntent;
       }
 
-      const confirmed = await stripe.paymentIntents.confirm(paymentIntentId);
+      const confirmed = await stripe!.paymentIntents.confirm(paymentIntentId);
       logger.info(`Stripe payment intent confirmed: ${paymentIntentId}`);
       return confirmed;
     } catch (error) {
@@ -53,8 +61,12 @@ export const stripeService = {
    * Retrieve a payment intent
    */
   retrievePaymentIntent: async (paymentIntentId: string): Promise<Stripe.PaymentIntent> => {
+    if (!isStripeConfigured()) {
+      throw new Error('Stripe is not configured. Please set STRIPE_SECRET_KEY in environment variables.');
+    }
+
     try {
-      const paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId);
+      const paymentIntent = await stripe!.paymentIntents.retrieve(paymentIntentId);
       return paymentIntent;
     } catch (error) {
       logger.error('Stripe retrieve payment intent error:', error);
@@ -69,8 +81,12 @@ export const stripeService = {
     paymentIntentId: string,
     amount?: number
   ): Promise<Stripe.Refund> => {
+    if (!isStripeConfigured()) {
+      throw new Error('Stripe is not configured. Please set STRIPE_SECRET_KEY in environment variables.');
+    }
+
     try {
-      const refund = await stripe.refunds.create({
+      const refund = await stripe!.refunds.create({
         payment_intent: paymentIntentId,
         amount,
       });
@@ -90,8 +106,12 @@ export const stripeService = {
     payload: string | Buffer,
     signature: string
   ): Stripe.Event => {
+    if (!isStripeConfigured()) {
+      throw new Error('Stripe is not configured. Please set STRIPE_SECRET_KEY in environment variables.');
+    }
+
     try {
-      const event = stripe.webhooks.constructEvent(
+      const event = stripe!.webhooks.constructEvent(
         payload,
         signature,
         process.env.STRIPE_WEBHOOK_SECRET || ''
