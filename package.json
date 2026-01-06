@@ -13,10 +13,13 @@
     "dev:backend": "npm run dev --workspace=backend",
     "dev:all": "npm run dev --workspace=frontend & npm run dev --workspace=backend",
     "build": "npm run build --workspaces",
+    "build:prod": "npm install && npm run build",
+    "postinstall": "npm run build:backend",
     "build:frontend": "npm run build --workspace=frontend",
     "build:backend": "npm run build --workspace=backend",
     "install:all": "npm install",
-    "type-check": "npm run type-check --workspaces"
+    "type-check": "npm run type-check --workspaces",
+    "migrate:prod": "npx prisma migrate deploy --schema=backend/prisma/schema.prisma"
   },
   "keywords": [
     "monorepo",
@@ -27,11 +30,8 @@
   "author": "",
   "license": "ISC",
   "engines": {
-    "node": ">=16.0.0",
+    "node": ">=18.0.0",
     "npm": ">=8.0.0"
-  },
-  "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "*"
   },
   "devDependencies": {
     "@types/paypal__checkout-server-sdk": "^1.0.8"
