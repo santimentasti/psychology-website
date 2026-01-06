@@ -1,7 +1,7 @@
 import { prisma } from '../config/database.js';
 import { stripeService } from './stripe.service.js';
 import { paypalService } from './paypal.service.js';
-import { CreatePaymentInput, CreatePaymentIntentInput } from '../schemas/payment.schema.js';
+import { CreatePaymentIntentInput } from '../schemas/payment.schema.js';
 import { PaymentStatus, PaymentMethod } from '../../../shared/types/payment.types.js';
 import { PACKAGE_TYPES } from '../../../shared/constants/index.js';
 import { logger } from '../utils/logger.js';

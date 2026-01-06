@@ -43,7 +43,7 @@ export const webhookController = {
    * Handle PayPal webhook (if needed)
    * POST /api/webhooks/paypal
    */
-  handlePayPalWebhook: async (req: Request, res: Response): Promise<void> => {
+  handlePayPalWebhook: async (_req: Request, res: Response): Promise<void> => {
     // PayPal webhook handling can be implemented here
     // For now, we'll use the capture endpoint directly
     res.status(200).json({ received: true });

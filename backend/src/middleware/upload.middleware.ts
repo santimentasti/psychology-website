@@ -4,12 +4,12 @@ import { Request } from 'express';
 
 // Configure storage
 const storage = multer.diskStorage({
-  destination: (req: Request, file: Express.Multer.File, cb) => {
+  destination: (_req: Request, _file: Express.Multer.File, cb) => {
     // In production, you would upload to S3, Cloudinary, etc.
     // For now, we'll use a local uploads directory
     cb(null, 'uploads/');
   },
-  filename: (req: Request, file: Express.Multer.File, cb) => {
+  filename: (_req: Request, file: Express.Multer.File, cb) => {
     // Generate unique filename
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
     const ext = path.extname(file.originalname);
@@ -19,7 +19,7 @@ const storage = multer.diskStorage({
 
 // File filter
 const fileFilter = (
-  req: Request,
+  _req: Request,
   file: Express.Multer.File,
   cb: multer.FileFilterCallback
 ) => {

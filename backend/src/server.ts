@@ -6,7 +6,7 @@ import { corsMiddleware } from './middleware/cors.middleware.js';
 import { generalRateLimiter } from './middleware/rateLimit.middleware.js';
 import { errorHandler } from './middleware/error.middleware.js';
 import routes from './routes/index.js';
-import { logger } from './utils/logger.js';
+// import { logger } from './utils/logger.js';
 
 dotenv.config();
 

@@ -1,4 +1,4 @@
-import paypal from '@paypal/checkout-server-sdk';
+import * as paypal from '@paypal/checkout-server-sdk';
 import { paypalClient } from '../config/paypal.js';
 import { logger } from '../utils/logger.js';
 
@@ -52,10 +52,11 @@ export const paypalService = {
   /**
    * Capture a PayPal order
    */
-  captureOrder: async (orderId: string): Promise<paypal.orders.OrdersCaptureResponse> => {
+  captureOrder: async (orderId: string): Promise<any> => {
     try {
       const request = new paypal.orders.OrdersCaptureRequest(orderId);
-      request.requestBody({});
+      // requestBody is optional for capture requests
+      // request.requestBody({});
 
       const capture = await paypalClient.execute(request);
       
@@ -74,7 +75,7 @@ export const paypalService = {
   /**
    * Get order details
    */
-  getOrder: async (orderId: string): Promise<paypal.orders.OrdersGetResponse> => {
+  getOrder: async (orderId: string): Promise<any> => {
     try {
       const request = new paypal.orders.OrdersGetRequest(orderId);
       const order = await paypalClient.execute(request);

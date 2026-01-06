@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { Brain, Users, HeartHandshake, Sparkles, ShieldCheck, Smile } from 'lucide-react'
+import { Brain, Users, Sparkles, ShieldCheck, Smile } from 'lucide-react'
 import { SERVICES_DATA, FIRST_CONSULTATION_PRICE, Service } from '../constants/mockData'
 import { formatCurrency } from '../utils/helpers'
 import './Services.css'

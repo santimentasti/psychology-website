@@ -1,4 +1,3 @@
-import { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 
 const allowedOrigins = process.env.CORS_ORIGINS

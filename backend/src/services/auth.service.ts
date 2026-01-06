@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 import { prisma } from '../config/database.js';
 import { JWT_CONFIG } from '../config/jwt.js';
 import { RegisterInput, LoginInput } from '../schemas/auth.schema.js';
-import { JWTPayload } from '../types/jwt.types.js';
+// import { JWTPayload } from '../types/jwt.types.js';
 import { logger } from '../utils/logger.js';
 
 export const authService = {
@@ -52,7 +52,7 @@ export const authService = {
       { patientId: patient.id, email: patient.email },
       JWT_CONFIG.secret,
       {
-        expiresIn: JWT_CONFIG.expiresIn,
+        expiresIn: JWT_CONFIG.expiresIn as any,
         issuer: JWT_CONFIG.issuer,
         audience: JWT_CONFIG.audience,
       }
@@ -91,7 +91,7 @@ export const authService = {
       { patientId: patient.id, email: patient.email },
       JWT_CONFIG.secret,
       {
-        expiresIn: JWT_CONFIG.expiresIn,
+        expiresIn: JWT_CONFIG.expiresIn as any,
         issuer: JWT_CONFIG.issuer,
         audience: JWT_CONFIG.audience,
       }
