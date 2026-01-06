@@ -161,7 +161,7 @@ export const appointmentService = {
     });
 
     // Check for actual time conflicts
-    const hasConflict = conflictingAppointments.some((appointment) => {
+    const hasConflict = conflictingAppointments.some((appointment: any) => {
       const appStart = new Date(appointment.dateTime);
       const appEnd = new Date(appStart);
       appEnd.setMinutes(appEnd.getMinutes() + appointment.service.duration);
@@ -399,7 +399,7 @@ export const appointmentService = {
         const timeString = `${currentTime.getHours().toString().padStart(2, '0')}:${currentTime.getMinutes().toString().padStart(2, '0')}`;
         
         // Check if this time slot conflicts with any booked appointment
-        const isBooked = bookedAppointments.some((appointment) => {
+        const isBooked = bookedAppointments.some((appointment: any) => {
           const appStart = new Date(appointment.dateTime);
           const appEnd = new Date(appStart);
           appEnd.setMinutes(appEnd.getMinutes() + service.duration);
