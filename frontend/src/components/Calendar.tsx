@@ -55,7 +55,7 @@ const Calendar = () => {
                 <CheckCircle size={24} />
                 <div>
                   <h4>Modalidad</h4>
-                  <p>Presencial u Online</p>
+                  <p>Exclusivamente Online</p>
                 </div>
               </div>
 

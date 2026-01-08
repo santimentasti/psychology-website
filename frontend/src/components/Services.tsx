@@ -59,15 +59,11 @@ const Services = () => {
         </div>
 
         <div className="services-note">
-          <h3>Modalidades de Atención</h3>
+          <h3>Modalidad de Atención</h3>
           <div className="modalities">
             <div className="modality">
-              <h4>📍 Presencial</h4>
-              <p>Consulta en tu ubicación o videollamada</p>
-            </div>
-            <div className="modality">
               <h4>💻 En Línea</h4>
-              <p>Sesiones por videollamada segura - Atiendo en múltiples países</p>
+              <p>Sesiones exclusivamente por videollamada segura - Atiendo en múltiples países</p>
             </div>
           </div>
           <p className="note-text">

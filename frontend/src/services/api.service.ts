@@ -1,6 +1,7 @@
 // Frontend API Service for backend integration
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
+// Use environment variable or default to production backend URL
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://psychology-backend-production.up.railway.app/api';
 
 interface ApiResponse<T> {
   success: boolean;

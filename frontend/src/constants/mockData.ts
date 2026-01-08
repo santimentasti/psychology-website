@@ -49,20 +49,9 @@ export interface FAQ {
 // Contact Information
 export const CONTACT_INFO: ContactInfo = {
   psychologistName: 'Lic. Matías Munno',
-  phone: '+5491123456789', // TODO: Replace with real WhatsApp number
-  email: 'matias.munno@psychology-practice.com', // TODO: Replace with real email
-  address: 'Av. Corrientes 1234, Piso 5, Oficina 12, C1043 CABA, Buenos Aires, Argentina',
-  addressShort: 'Buenos Aires, Argentina',
-  socialMedia: {
-    instagram: {
-      url: 'https://instagram.com/matiasmunno_psi', // TODO: Replace with real Instagram
-      handle: '@matiasmunno_psi'
-    },
-    linkedin: {
-      url: 'https://linkedin.com/in/matias-munno', // TODO: Replace with real LinkedIn
-      handle: 'Matías Munno'
-    }
-  }
+  phone: '+5491157445931', // WhatsApp: +54 9 11 5744-5931
+  email: 'munno.matias5@gmail.com',
+  socialMedia: {}
 }
 
 // Professional Information
@@ -87,48 +76,16 @@ export const SERVICES_DATA: Service[] = [
     title: 'Terapia Individual',
     description: 'Sesiones personalizadas para trabajar en tus desafíos emocionales, ansiedad, depresión, o cualquier situación que afecte tu bienestar.',
     features: ['Sesiones de 50 minutos', 'Plan personalizado', 'Seguimiento continuo'],
-    price: 800,
-    currency: 'ARS'
-  },
-  {
-    id: 'terapia-pareja',
-    title: 'Terapia de Pareja',
-    description: 'Fortalece tu relación trabajando en comunicación, resolución de conflictos y construcción de vínculos más saludables.',
-    features: ['Sesiones de 60 minutos', 'Ejercicios prácticos', 'Estrategias de comunicación'],
-    price: 1200,
-    currency: 'ARS'
+    price: 50,
+    currency: 'USD'
   },
   {
     id: 'terapia-familiar',
     title: 'Terapia Familiar',
     description: 'Mejora la dinámica familiar y resuelve conflictos mediante comunicación efectiva y comprensión mutua.',
     features: ['Sesiones de 60 minutos', 'Todos los miembros', 'Técnicas de mediación'],
-    price: 1500,
-    currency: 'ARS'
-  },
-  {
-    id: 'desarrollo-personal',
-    title: 'Desarrollo Personal',
-    description: 'Alcanza tu máximo potencial trabajando en autoestima, confianza, establecimiento de metas y crecimiento personal.',
-    features: ['Objetivos claros', 'Herramientas prácticas', 'Acompañamiento'],
-    price: 800,
-    currency: 'ARS'
-  },
-  {
-    id: 'manejo-ansiedad',
-    title: 'Manejo de Ansiedad',
-    description: 'Aprende técnicas efectivas para controlar la ansiedad, el estrés y los ataques de pánico mediante TCC.',
-    features: ['Técnicas de relajación', 'Estrategias de afrontamiento', 'Exposición gradual'],
-    price: 800,
-    currency: 'ARS'
-  },
-  {
-    id: 'tratamiento-depresion',
-    title: 'Tratamiento de Depresión',
-    description: 'Trabaja en superar la depresión mediante técnicas cognitivo-conductuales y desarrollo de habilidades de afrontamiento.',
-    features: ['Terapia basada en evidencia', 'Activación conductual', 'Reestructuración cognitiva'],
-    price: 800,
-    currency: 'ARS'
+    price: 65,
+    currency: 'USD'
   }
 ]
 
@@ -156,7 +113,7 @@ export const FAQ_DATA: FAQ[] = [
   },
   {
     question: '¿Ofrecen sesiones en línea?',
-    answer: 'Sí, ofrezco sesiones tanto presenciales como por videollamada segura. Atiendo pacientes en Argentina, Latinoamérica, Canadá, Estados Unidos y Europa.'
+    answer: 'Sí, ofrezco sesiones exclusivamente por videollamada segura. Atiendo pacientes en Argentina, Latinoamérica, Canadá, Estados Unidos y Europa.'
   },
   {
     question: '¿Cómo agendar la primera cita?',

@@ -2,7 +2,13 @@ import cors from 'cors';
 
 const allowedOrigins = process.env.CORS_ORIGINS
   ? process.env.CORS_ORIGINS.split(',')
-  : ['http://localhost:5173', 'http://localhost:3000'];
+  : [
+      'http://localhost:5173',
+      'http://localhost:3000',
+      'https://psychology-backend-production.up.railway.app',
+      'https://psychology-practice-website-production.up.railway.app',
+      // Add your frontend Railway URL here once deployed
+    ];
 
 export const corsMiddleware = cors({
   origin: (origin, callback) => {
