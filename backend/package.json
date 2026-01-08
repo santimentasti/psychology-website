@@ -21,6 +21,10 @@
   ],
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
   "dependencies": {
     "@paypal/checkout-server-sdk": "^1.0.3",
     "@prisma/client": "^5.7.0",
