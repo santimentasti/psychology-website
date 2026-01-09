@@ -121,8 +121,10 @@ export const FAQ_DATA: FAQ[] = [
   }
 ]
 
-// Image URL - Replace with actual psychologist image
-export const HERO_IMAGE_URL = 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=500&h=600&fit=crop'
+// Image URL - Professional portrait image (Cloudinary)
+// Public ID: matias-munno-portrait
+// Original dimensions: 960 × 1280
+export const HERO_IMAGE_URL = import.meta.env.VITE_HERO_IMAGE_URL || 'https://res.cloudinary.com/drv3s51ks/image/upload/w_500,h_600,c_fill,q_auto,f_auto/matias-munno-portrait'
 
 // Cancellation Policy
 export const CANCELLATION_POLICY = 'Si necesitas cancelar o reprogramar tu cita, por favor avísanos con al menos 24 horas de anticipación.'

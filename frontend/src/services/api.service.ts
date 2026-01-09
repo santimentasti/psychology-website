@@ -3,6 +3,12 @@
 // Use environment variable or default to production backend URL
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://psychology-backend-production.up.railway.app/api';
 
+// Debug: Log API URL (remove in production)
+if (import.meta.env.DEV) {
+  console.log('🔗 API Base URL:', API_BASE_URL);
+  console.log('🔗 Environment VITE_API_URL:', import.meta.env.VITE_API_URL);
+}
+
 interface ApiResponse<T> {
   success: boolean;
   data?: T;
@@ -32,21 +38,46 @@ async function apiFetch<T>(
       headers,
     });
 
-    const data = await response.json();
+    // Check if response is JSON before parsing
+    const contentType = response.headers.get('content-type');
+    let data;
     
-    if (!response.ok) {
+    if (contentType && contentType.includes('application/json')) {
+      data = await response.json();
+    } else {
+      const text = await response.text();
+      console.error('Non-JSON response:', text);
       return {
         success: false,
-        error: data.error || 'An error occurred',
+        error: `Server returned non-JSON response: ${response.status} ${response.statusText}`,
+      };
+    }
+    
+    if (!response.ok) {
+      console.error('API Error Response:', {
+        status: response.status,
+        statusText: response.statusText,
+        data,
+        url: `${API_BASE_URL}${endpoint}`
+      });
+      return {
+        success: false,
+        error: data.error || `Error ${response.status}: ${response.statusText}`,
       };
     }
     
     return data;
   } catch (error) {
-    console.error('API Error:', error);
+    console.error('API Network Error:', {
+      error,
+      url: `${API_BASE_URL}${endpoint}`,
+      message: error instanceof Error ? error.message : 'Unknown error'
+    });
     return {
       success: false,
-      error: 'Network error. Please check your connection and try again.',
+      error: error instanceof Error 
+        ? `Network error: ${error.message}. Please check your connection and backend URL.`
+        : 'Network error. Please check your connection and try again.',
     };
   }
 }
