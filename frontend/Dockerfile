@@ -1,5 +1,6 @@
 # ===================================
 # Frontend Dockerfile - React + Vite
+# Standalone build (when Root Directory = frontend)
 # ===================================
 
 FROM node:18-alpine AS base
@@ -11,10 +12,8 @@ WORKDIR /app
 # ===================================
 FROM base AS deps
 
-# Copy root package files
+# Copy package files
 COPY package*.json ./
-COPY frontend/package*.json ./frontend/
-COPY shared/package*.json ./shared/
 
 # Install dependencies
 RUN npm ci --ignore-scripts
