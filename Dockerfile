@@ -30,10 +30,8 @@ FROM base AS builder
 
 WORKDIR /app
 
-# Copy dependencies
+# Copy dependencies (everything is hoisted to the root in workspaces)
 COPY --from=deps /app/node_modules ./node_modules
-COPY --from=deps /app/backend/node_modules ./backend/node_modules 2>/dev/null || true
-COPY --from=deps /app/shared/node_modules ./shared/node_modules 2>/dev/null || true
 
 # Copy source code
 COPY backend ./backend
