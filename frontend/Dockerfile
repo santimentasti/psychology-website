@@ -11,10 +11,12 @@ WORKDIR /app
 # ===================================
 FROM base AS deps
 
-# Copy package files
+# Copy root package files
 COPY package*.json ./
+COPY frontend/package*.json ./frontend/
+COPY shared/package*.json ./shared/
 
-# Install dependencies (ignore scripts to prevent monorepo postinstall errors)
+# Install dependencies
 RUN npm ci --ignore-scripts
 
 # ===================================

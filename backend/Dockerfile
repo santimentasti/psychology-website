@@ -19,8 +19,8 @@ COPY package*.json ./
 COPY backend/package*.json ./backend/
 COPY shared/package*.json ./shared/
 
-# Install all dependencies (including devDependencies for build)
-RUN npm ci
+# Install all dependencies (ignore scripts to prevent premature builds)
+RUN npm ci --ignore-scripts
 
 # ===================================
 # Build Stage
@@ -29,10 +29,8 @@ FROM base AS builder
 
 WORKDIR /app
 
-# Copy dependencies from deps stage
+# Copy dependencies (everything is hoisted to the root in workspaces)
 COPY --from=deps /app/node_modules ./node_modules
-COPY --from=deps /app/backend/node_modules ./backend/node_modules
-COPY --from=deps /app/shared/node_modules ./shared/node_modules
 
 # Copy source code
 COPY backend ./backend
@@ -53,7 +51,6 @@ ENV NODE_ENV=production
 
 # Copy built files and dependencies
 COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/backend/node_modules ./backend/node_modules
 COPY --from=builder /app/backend/dist ./backend/dist
 COPY --from=builder /app/backend/package.json ./backend/package.json
 COPY --from=builder /app/backend/prisma ./backend/prisma
