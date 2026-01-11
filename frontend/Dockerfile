@@ -14,8 +14,8 @@ FROM base AS deps
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies
-RUN npm ci
+# Install dependencies (ignore scripts to prevent monorepo postinstall errors)
+RUN npm ci --ignore-scripts
 
 # ===================================
 # Build Stage
