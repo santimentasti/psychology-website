@@ -42,13 +42,19 @@ RUN npm run build
 # ===================================
 FROM nginx:alpine AS runner
 
-# Copy custom nginx config
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Copy nginx config template
+COPY nginx.conf /etc/nginx/templates/default.conf.template
 
 # Copy built files
 COPY --from=builder /app/dist /usr/share/nginx/html
 
-# Expose port 80 (Railway will handle port mapping)
-EXPOSE 80
+# Railway provides PORT env var - nginx:alpine image handles envsubst automatically
+# when config is placed in /etc/nginx/templates/ with .template extension
+
+# Default port if PORT not set
+ENV PORT=80
+
+# Expose the port (Railway will override with $PORT)
+EXPOSE $PORT
 
 CMD ["nginx", "-g", "daemon off;"]
