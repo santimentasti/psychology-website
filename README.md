@@ -1,155 +1,93 @@
 # 🧠 Psychology Practice Website - Monorepo
 
-Una página web moderna y profesional para consultorios de psicología, diseñada para mostrar servicios, agendar citas y facilitar el contacto con pacientes.
+Una plataforma profesional y moderna diseñada para psicólogos, que facilita la gestión del consultorio, el agendamiento de citas y el procesamiento de pagos internacionales.
 
-## 📁 Estructura del Proyecto
+## 📁 Estructura del Monorepo
 
-Este es un monorepo que contiene:
+Este proyecto utiliza una estructura de monorepo para mantener sincronizados el frontend, el backend y el código compartido:
 
-- **`frontend/`** - Aplicación React + TypeScript + Vite
-- **`backend/`** - API Express.js + TypeScript
+- [frontend/](file:///c:/Users/santi/OneDrive/Escritorio/proyectos/psychology-website/frontend) - Aplicación Single Page (SPA) con React y Vite.
+- [backend/](file:///c:/Users/santi/OneDrive/Escritorio/proyectos/psychology-website/backend) - API REST robusta con Express.js y Prisma ORM.
+- [shared/](file:///c:/Users/santi/OneDrive/Escritorio/proyectos/psychology-website/shared) - Tipos de TypeScript y constantes compartidas entre ambos extremos.
 
-## ✨ Características
+## ✨ Características Principales
 
-- **Hero Section**: Presentación profesional con foto y llamadas a la acción
-- **Sobre mí**: Descripción detallada del psicólogo y sus calificaciones
-- **Servicios**: Catálogo completo de servicios terapéuticos ofrecidos
-- **Calendario**: Sistema de agendamiento con horarios disponibles
-- **Contacto**: Múltiples métodos de contacto incluyendo WhatsApp
-- **Diseño Responsive**: Optimizado para móviles, tablets y escritorio
-- **Animaciones**: Transiciones suaves y efectos visuales profesionales
+- **📅 Sistema de Agendamiento**: Gestión de turnos con estados (PENDIENTE, CONFIRMADO, COMPLETADO, CANCELADO). Incluye validación de disponibilidad de slots.
+- **💰 Pagos Multi-moneda**: Soporte integrado para cobros en **USD, EUR, ARS y MXN** a través de **Stripe** y **PayPal**.
+- **🔒 Autenticación Segura**: Sistema de login para pacientes con JWT (JSON Web Tokens) y cifrado de contraseñas.
+- **📄 Gestión de Documentos**: Los pacientes pueden subir y gestionar documentos directamente desde su portal.
+- **📧 Notificaciones Automáticas**: Envío de correos electrónicos de confirmación y recordatorios mediante la API de **SendGrid**.
+- **📱 Optimización Total**: Diseño responsive de alta fidelidad, animaciones fluidas y micro-interacciones.
+- **🛡️ Seguridad Avanzada**: Implementación de rate-limiting, headers de seguridad (Helmet) y validación estricta de datos con Zod.
 
-## 🚀 Instalación y Uso
+## 🛠️ Tecnologías
 
-### Requisitos previos
-- Node.js (versión 16 o superior)
-- npm (versión 8 o superior)
+### Frontend
+- **Framework**: React 18 + TypeScript 5
+- **Build Tool**: Vite
+- **Navegación**: React Router v6
+- **Iconos**: Lucide React
+- **Estilos**: Pure CSS (Variables modernas, Grid, Flexbox)
+- **Componentes**: React Calendar para agendamiento
 
-### Instalación
+### Backend
+- **Core**: Express.js + TypeScript
+- **Base de Datos**: PostgreSQL
+- **ORM**: Prisma
+- **Autenticación**: JWT (jsonwebtoken) & BcryptJS
+- **Validación**: Zod
+- **Logs**: Morgan & Logger personalizado
 
-1. Instala todas las dependencias del monorepo:
+### Integraciones y Servicios
+- **Pagos**: Stripe SDK & PayPal Checkout Server SDK
+- **Email**: SendGrid Mail Service
+- **Seguridad**: Helmet & Express Rate Limit
+- **Subida de Archivos**: Multer
+
+## 🚀 Instalación y Configuración
+
+### 1. Clonar e instalar dependencias
+Desde la raíz del proyecto:
 ```bash
 npm install
 ```
 
-Esto instalará las dependencias tanto del frontend como del backend.
-
-### Desarrollo
-
-#### Frontend solamente
-```bash
-npm run dev
-# o
-npm run dev --workspace=frontend
-```
-
-#### Backend solamente
-```bash
-npm run dev:backend
-# o
-npm run dev --workspace=backend
-```
-
-#### Frontend y Backend simultáneamente
-```bash
-npm run dev:all
-```
-
-### Build para producción
-
-#### Build completo
-```bash
-npm run build
-```
-
-#### Build individual
-```bash
-npm run build:frontend
-npm run build:backend
-```
-
-## 📂 Estructura de Carpetas
-
-```
-psychology-website/
-├── frontend/          # Aplicación React
-│   ├── src/
-│   ├── public/
-│   ├── package.json
-│   └── vite.config.ts
-├── backend/           # API Express.js
-│   ├── src/
-│   │   └── index.ts
-│   ├── package.json
-│   └── tsconfig.json
-└── package.json       # Root package.json (workspaces)
-```
-
-## 🎯 Tecnologías
-
-### Frontend
-- React 18
-- TypeScript
-- Vite
-- CSS3 (sin frameworks adicionales)
-- Lucide React (iconos)
-
-### Backend
-- Express.js
-- TypeScript
-- CORS
-- dotenv
-
-## 🔧 Configuración del Backend
-
-1. Copia el archivo de ejemplo de variables de entorno:
+### 2. Configurar Variables de Entorno
+Crea un archivo `.env` en el directorio `backend/` basado en el ejemplo:
 ```bash
 cd backend
 cp .env.example .env
 ```
+Asegúrate de configurar `DATABASE_URL`, las claves de `STRIPE`, `PAYPAL` y `SENDGRID`.
 
-2. Edita `.env` con tus configuraciones:
-```env
-PORT=3000
-NODE_ENV=development
+### 3. Preparar la Base de Datos
+Genera el cliente de Prisma y aplica las migraciones:
+```bash
+cd backend
+npm run generate
+npm run migrate
 ```
 
 ## 📝 Scripts Disponibles
 
-### Root (Monorepo)
-- `npm run dev` - Inicia el frontend en modo desarrollo
-- `npm run dev:backend` - Inicia el backend en modo desarrollo
-- `npm run dev:all` - Inicia frontend y backend simultáneamente
-- `npm run build` - Build de todos los workspaces
-- `npm run install:all` - Instala dependencias de todos los workspaces
-
-### Frontend
-- `npm run dev` - Servidor de desarrollo Vite
-- `npm run build` - Build para producción
-- `npm run preview` - Preview del build de producción
+### Raíz (Gestión Global)
+- `npm run dev:all` - Ejecuta Frontend y Backend simultáneamente (Modo Desarrollo).
+- `npm run build` - Compila todos los paquetes para producción.
+- `npm run dev` - Abre solo el frontend.
+- `npm run dev:backend` - Inicia solo el servidor de API.
 
 ### Backend
-- `npm run dev` - Servidor de desarrollo con hot reload (tsx)
-- `npm run build` - Compila TypeScript a JavaScript
-- `npm run start` - Inicia el servidor en producción
-- `npm run type-check` - Verifica tipos sin compilar
+- `npm run seed` - Poblar la base de datos con datos iniciales (servicios, slots).
+- `npm run studio` - Abre la interfaz visual de Prisma para ver los datos.
+- `npm run type-check` - Verifica la integridad de tipos.
 
-## 🎨 Personalización
+## 🎨 Personalización y Guías
 
-### Frontend
-Ver la documentación en `frontend/README.md` (si existe) o consulta `BEST_PRACTICES.md` para detalles sobre personalización.
-
-### Backend
-El backend está configurado con Express.js y TypeScript. Puedes agregar rutas, controladores, servicios y modelos según tus necesidades.
-
-## 📄 Licencia
-
-Este proyecto es de uso libre para fines personales y profesionales.
-
-## 🤝 Soporte
-
-Para preguntas o soporte, contacta al desarrollador.
+Para más detalles sobre cómo contribuir o personalizar el sitio, consulta:
+- [BEST_PRACTICES.md](file:///c:/Users/santi/OneDrive/Escritorio/proyectos/psychology-website/BEST_PRACTICES.md) - Guía de estilos y arquitectura.
+- [DEVELOPMENT_GUIDE.md](file:///c:/Users/santi/OneDrive/Escritorio/proyectos/psychology-website/DEVELOPMENT_GUIDE.md) - Documentación detallada de flujo de trabajo.
 
 ---
 
-**Nota**: Esta es una maqueta/mockup para presentación. Los números de contacto y datos son de ejemplo y deben ser reemplazados con información real antes del lanzamiento.
+**Nota Legal/Presentación**: Este proyecto es una solución profesional para consultorios. Los datos de contacto en las demostraciones son ficticios y deben ser actualizados en el archivo de configuración correspondiente antes de su despliegue en producción.
+
