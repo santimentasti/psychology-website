@@ -20,8 +20,8 @@ COPY package*.json ./
 COPY backend/package*.json ./backend/
 COPY shared/package*.json ./shared/
 
-# Install all dependencies
-RUN npm ci
+# Install all dependencies (ignore scripts to prevent premature builds)
+RUN npm ci --ignore-scripts
 
 # ===================================
 # Build Stage
