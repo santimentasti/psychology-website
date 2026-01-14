@@ -1,5 +1,6 @@
 # ===================================
 # Backend Dockerfile - Express + Prisma
+# Standalone build (when Root Directory = backend)
 # ===================================
 
 FROM node:18-alpine AS base
@@ -16,8 +17,6 @@ FROM base AS deps
 
 # Copy package files
 COPY package*.json ./
-COPY backend/package*.json ./backend/
-COPY shared/package*.json ./shared/
 
 # Install all dependencies (ignore scripts to prevent premature builds)
 RUN npm ci --ignore-scripts
@@ -33,12 +32,10 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 
 # Copy source code
-COPY backend ./backend
-COPY shared ./shared
-COPY package*.json ./
+COPY . .
 
 # Generate Prisma client and build
-RUN npm run build --workspace=backend
+RUN npx prisma generate && npm run build
 
 # ===================================
 # Production Stage
@@ -51,13 +48,9 @@ ENV NODE_ENV=production
 
 # Copy built files and dependencies
 COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/backend/dist ./backend/dist
-COPY --from=builder /app/backend/package.json ./backend/package.json
-COPY --from=builder /app/backend/prisma ./backend/prisma
+COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/package.json ./package.json
-
-# Expose port (Railway will set PORT env var)
-EXPOSE 3000
+COPY --from=builder /app/prisma ./prisma
 
 # Run migrations and start server
-CMD ["sh", "-c", "npx prisma migrate deploy --schema=./backend/prisma/schema.prisma && node backend/dist/backend/src/index.js"]
+CMD ["sh", "-c", "npx prisma migrate deploy && node dist/backend/src/index.js"]
