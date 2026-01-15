@@ -15,8 +15,8 @@ FROM base AS deps
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies
-RUN npm ci --ignore-scripts
+# Install dependencies (using npm install due to lock file sync issues)
+RUN npm install --ignore-scripts
 
 # ===================================
 # Build Stage
