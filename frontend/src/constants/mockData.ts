@@ -80,11 +80,11 @@ export const SERVICES_DATA: Service[] = [
     currency: 'USD'
   },
   {
-    id: 'terapia-familiar',
-    title: 'Terapia Familiar',
-    description: 'Mejora la dinámica familiar y resuelve conflictos mediante comunicación efectiva y comprensión mutua.',
-    features: ['Sesiones de 60 minutos', 'Todos los miembros', 'Técnicas de mediación'],
-    price: 65,
+    id: 'terapia-de-pareja',
+    title: 'Terapia de Pareja',
+    description: 'Espacio para fortalecer la relación, mejorar la comunicación y resolver conflictos de pareja en un entorno seguro y profesional.',
+    features: ['Sesiones de 60 minutos', 'Ambos integrantes', 'Técnicas terapéuticas cognitivo conductuales'],
+    price: 60,
     currency: 'USD'
   }
 ]

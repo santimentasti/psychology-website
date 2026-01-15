@@ -21,7 +21,6 @@ const Footer = () => {
     servicios: [
       { label: 'Terapia Individual', href: '#servicios' },
       { label: 'Terapia de Pareja', href: '#servicios' },
-      { label: 'Terapia Familiar', href: '#servicios' },
       { label: 'Desarrollo Personal', href: '#servicios' }
     ],
     recursos: [
@@ -41,14 +40,14 @@ const Footer = () => {
               <span>{CONTACT_INFO.psychologistName}</span>
             </div>
             <p className="footer-description">
-              Psicólogo clínico especializado en {PROFESSIONAL_INFO.specialization.toLowerCase()}. 
+              Psicólogo clínico especializado en {PROFESSIONAL_INFO.specialization.toLowerCase()}.
               {PROFESSIONAL_INFO.yearsOfExperience} años ayudando a personas a alcanzar su bienestar emocional.
             </p>
             <div className="footer-social">
               {CONTACT_INFO.socialMedia.instagram?.url && (
-                <a 
+                <a
                   href={CONTACT_INFO.socialMedia.instagram.url}
-                  target="_blank" 
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="social-icon-link"
                   aria-label={`Sígueme en Instagram: ${CONTACT_INFO.socialMedia.instagram.handle}`}
@@ -57,9 +56,9 @@ const Footer = () => {
                 </a>
               )}
               {CONTACT_INFO.socialMedia.linkedin?.url && (
-                <a 
+                <a
                   href={CONTACT_INFO.socialMedia.linkedin.url}
-                  target="_blank" 
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="social-icon-link"
                   aria-label={`Conéctate en LinkedIn: ${CONTACT_INFO.socialMedia.linkedin.handle}`}

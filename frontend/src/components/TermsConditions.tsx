@@ -10,7 +10,7 @@ const TermsConditions = () => {
 
           <h2>1. Aceptación de los Términos</h2>
           <p>
-            Al solicitar servicios de psicología, usted acepta estos términos y condiciones. 
+            Al solicitar servicios de psicología, usted acepta estos términos y condiciones.
             Si no está de acuerdo, por favor no utilice estos servicios.
           </p>
 
@@ -20,25 +20,24 @@ const TermsConditions = () => {
             <li>Evaluación psicológica</li>
             <li>Psicoterapia individual</li>
             <li>Terapia de pareja</li>
-            <li>Terapia familiar</li>
             <li>Orientación y counseling</li>
           </ul>
           <p>
-            <strong>Importante:</strong> Los servicios psicológicos no constituyen tratamiento de 
-            emergencia. En caso de crisis, contacte servicios de emergencia locales o acuda al 
+            <strong>Importante:</strong> Los servicios psicológicos no constituyen tratamiento de
+            emergencia. En caso de crisis, contacte servicios de emergencia locales o acuda al
             hospital más cercano.
           </p>
 
           <h2>3. Relación Terapéutica</h2>
           <h3>3.1 Naturaleza de la Relación</h3>
           <p>
-            La relación entre terapeuta y paciente es estrictamente profesional. Cualquier relación 
+            La relación entre terapeuta y paciente es estrictamente profesional. Cualquier relación
             dual o conflicto de interés debe ser comunicado inmediatamente.
           </p>
 
           <h3>3.2 Duración del Tratamiento</h3>
           <p>
-            La duración del tratamiento varía según las necesidades individuales. El progreso será 
+            La duración del tratamiento varía según las necesidades individuales. El progreso será
             evaluado regularmente y usted tiene derecho a discontinuar el tratamiento en cualquier momento.
           </p>
 
@@ -108,7 +107,7 @@ const TermsConditions = () => {
 
           <h2>7. Confidencialidad</h2>
           <p>
-            La confidencialidad es fundamental. Para información detallada, consulte nuestra 
+            La confidencialidad es fundamental. Para información detallada, consulte nuestra
             Política de Privacidad. Los límites de confidencialidad incluyen:
           </p>
           <ul>
@@ -136,7 +135,7 @@ const TermsConditions = () => {
           <h2>10. Terminación del Tratamiento</h2>
           <h3>10.1 Por el Paciente</h3>
           <p>
-            Usted puede terminar el tratamiento en cualquier momento. Se recomienda una sesión de 
+            Usted puede terminar el tratamiento en cualquier momento. Se recomienda una sesión de
             cierre para revisar el progreso y planificar el futuro.
           </p>
 
@@ -167,7 +166,7 @@ const TermsConditions = () => {
 
           <h2>12. Código Ético</h2>
           <p>
-            Mi práctica se rige por el Código de Ética del Colegio de Psicólogos y las leyes 
+            Mi práctica se rige por el Código de Ética del Colegio de Psicólogos y las leyes
             aplicables de práctica profesional.
           </p>
 
@@ -182,31 +181,31 @@ const TermsConditions = () => {
 
           <h2>14. Modificaciones</h2>
           <p>
-            Estos términos pueden modificarse. Los cambios significativos se comunicarán a pacientes 
+            Estos términos pueden modificarse. Los cambios significativos se comunicarán a pacientes
             activos. El uso continuado de servicios implica aceptación de los términos modificados.
           </p>
 
           <h2>15. Consentimiento Informado</h2>
           <p>
-            Al agendar su primera cita, se le proporcionará un documento de Consentimiento Informado 
+            Al agendar su primera cita, se le proporcionará un documento de Consentimiento Informado
             más detallado que debe firmar antes de iniciar el tratamiento.
           </p>
 
           <h2>16. Legislación Aplicable</h2>
           <p>
-            Estos términos se rigen por las leyes de Argentina y la jurisdicción aplicable será 
+            Estos términos se rigen por las leyes de Argentina y la jurisdicción aplicable será
             la de Buenos Aires.
           </p>
 
           <h2>17. Contacto</h2>
           <p>
-            Para preguntas sobre estos términos, por favor contácteme a través de los medios 
+            Para preguntas sobre estos términos, por favor contácteme a través de los medios
             indicados en este sitio web.
           </p>
 
           <div className="legal-note">
             <p>
-              <strong>Declaración:</strong> Al solicitar servicios, usted reconoce haber leído, 
+              <strong>Declaración:</strong> Al solicitar servicios, usted reconoce haber leído,
               comprendido y aceptado estos Términos y Condiciones, así como la Política de Privacidad.
             </p>
           </div>
