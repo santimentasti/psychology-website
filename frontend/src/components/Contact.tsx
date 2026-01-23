@@ -50,20 +50,20 @@ const Contact = () => {
 
   const contactMethods = useMemo<ContactMethod[]>(() => {
     const methods: ContactMethod[] = []
-    
+
     if (CONTACT_INFO.phone) {
       methods.push({
         icon: <MessageCircle size={ICON_SIZE} />,
-        title: 'WhatsApp',
+        title: t.contact.whatsapp,
         content: formatPhoneNumber(CONTACT_INFO.phone),
-        description: 'Respuesta rápida',
+        description: t.contact.quickResponse,
         action: handleWhatsAppClick,
         color: '#25d366'
       }, {
         icon: <Phone size={ICON_SIZE} />,
-        title: 'Teléfono',
+        title: t.contact.phone,
         content: formatPhoneNumber(CONTACT_INFO.phone),
-        description: 'Llamadas disponibles',
+        description: t.contact.callsAvailable,
         action: handlePhoneClick,
         color: '#4a90a4'
       })
@@ -72,9 +72,9 @@ const Contact = () => {
     if (CONTACT_INFO.email) {
       methods.push({
         icon: <Mail size={ICON_SIZE} />,
-        title: 'Email',
+        title: t.contact.email,
         content: CONTACT_INFO.email,
-        description: 'Respuesta en 24 horas',
+        description: t.contact.responseIn24Hours,
         action: handleEmailClick,
         color: '#5eb3cc'
       })
@@ -83,16 +83,16 @@ const Contact = () => {
     if (CONTACT_INFO.addressShort) {
       methods.push({
         icon: <MapPin size={ICON_SIZE} />,
-        title: 'Ubicación',
+        title: t.contact.location,
         content: CONTACT_INFO.addressShort,
-        description: CONTACT_INFO.address || '',
+        description: t.contact.onlineConsultations,
         action: () => {},
         color: '#90c9db'
       })
     }
 
     return methods
-  }, [handleWhatsAppClick, handlePhoneClick, handleEmailClick])
+  }, [t, handleWhatsAppClick, handlePhoneClick, handleEmailClick])
 
   const socialLinks = useMemo<SocialLink[]>(() => {
     const links: SocialLink[] = []
@@ -121,9 +121,9 @@ const Contact = () => {
   return (
     <section id="contacto" className="section contact-section">
       <div className="container">
-        <h2 className="section-title">Contacto</h2>
+        <h2 className="section-title">{t.contact.title}</h2>
         <p className="contact-subtitle">
-          Estoy aquí para ayudarte. Contáctame por el medio que prefieras
+          {t.contact.subtitle}
         </p>
 
         <div className="contact-grid">
@@ -172,8 +172,8 @@ const Contact = () => {
           )}
 
           <div className="faq-section card">
-            <h3>Preguntas Frecuentes</h3>
-            {FAQ_DATA.map((faq, index) => (
+            <h3>{t.contact.faq}</h3>
+            {t.contact.faqItems.map((faq, index) => (
               <div key={index} className="faq-item">
                 <h4>{faq.question}</h4>
                 <p>{faq.answer}</p>

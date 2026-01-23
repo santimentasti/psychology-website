@@ -80,10 +80,15 @@ export const translations = {
     // Contact
     contact: {
       title: 'Contacto',
-      subtitle: '¿Tienes alguna pregunta o deseas agendar una consulta? Contáctame',
+      subtitle: 'Estoy aquí para ayudarte. Contáctame por el medio que prefieras',
       phone: 'Teléfono',
       email: 'Email',
       location: 'Ubicación',
+      whatsapp: 'WhatsApp',
+      quickResponse: 'Respuesta rápida',
+      callsAvailable: 'Llamadas disponibles',
+      responseIn24Hours: 'Respuesta en 24 horas',
+      onlineConsultations: 'Consultas en línea',
       faq: 'Preguntas Frecuentes',
       faqItems: [
         {
@@ -189,10 +194,15 @@ export const translations = {
     // Contact
     contact: {
       title: 'Contact',
-      subtitle: 'Have any questions or want to schedule a consultation? Contact me',
+      subtitle: 'I am here to help you. Contact me through your preferred method',
       phone: 'Phone',
       email: 'Email',
       location: 'Location',
+      whatsapp: 'WhatsApp',
+      quickResponse: 'Quick response',
+      callsAvailable: 'Calls available',
+      responseIn24Hours: 'Response in 24 hours',
+      onlineConsultations: 'Online consultations',
       faq: 'Frequently Asked Questions',
       faqItems: [
         {
