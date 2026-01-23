@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { Brain, Mail, Phone, MapPin, Instagram, Linkedin, Heart } from 'lucide-react'
 import { CONTACT_INFO, PROFESSIONAL_INFO } from '../constants/mockData'
 import { getCurrentYear, formatPhoneNumber } from '../utils/helpers'
+import { useTranslation } from '../hooks/useTranslation'
 import './Footer.css'
 
 interface FooterLink {
@@ -16,17 +17,17 @@ interface FooterLinks {
 
 const Footer = () => {
   const currentYear = getCurrentYear()
+  const { t } = useTranslation()
 
   const footerLinks: FooterLinks = {
     servicios: [
-      { label: 'Terapia Individual', href: '#servicios' },
-      { label: 'Terapia de Pareja', href: '#servicios' },
-      { label: 'Desarrollo Personal', href: '#servicios' }
+      { label: t.services.individualTherapy, href: '#servicios' },
+      { label: t.services.coupleTherapy, href: '#servicios' }
     ],
     recursos: [
-      { label: 'Sobre mí', href: '#sobre-mi' },
-      { label: 'Agenda tu cita', href: '#agenda' },
-      { label: 'Contacto', href: '#contacto' }
+      { label: t.header.about, href: '#sobre-mi' },
+      { label: t.hero.cta, href: '#agenda' },
+      { label: t.header.contact, href: '#contacto' }
     ]
   }
 
@@ -70,7 +71,7 @@ const Footer = () => {
           </div>
 
           <div className="footer-col">
-            <h4 className="footer-title">Servicios</h4>
+            <h4 className="footer-title">{t.services.title}</h4>
             <ul className="footer-links">
               {footerLinks.servicios.map((link, index) => (
                 <li key={index}>
@@ -81,7 +82,7 @@ const Footer = () => {
           </div>
 
           <div className="footer-col">
-            <h4 className="footer-title">Navegación</h4>
+            <h4 className="footer-title">{t.footer.navigation}</h4>
             <ul className="footer-links">
               {footerLinks.recursos.map((link, index) => (
                 <li key={index}>
@@ -92,7 +93,7 @@ const Footer = () => {
           </div>
 
           <div className="footer-col">
-            <h4 className="footer-title">Contacto</h4>
+            <h4 className="footer-title">{t.contact.title}</h4>
             <ul className="footer-contact">
               {CONTACT_INFO.phone && (
                 <li>
@@ -124,12 +125,12 @@ const Footer = () => {
           <div className="footer-divider"></div>
           <div className="footer-bottom-content">
             <p className="footer-copyright">
-              © {currentYear} {CONTACT_INFO.psychologistName}. Todos los derechos reservados.
+              © {currentYear} {CONTACT_INFO.psychologistName}. {t.footer.rights}.
             </p>
             <p className="footer-legal">
-              <Link to="/privacy-policy">Política de Confidencialidad</Link>
+              <Link to="/privacy-policy">{t.footer.privacy}</Link>
               <span className="separator">•</span>
-              <Link to="/terms-conditions">Términos y Condiciones</Link>
+              <Link to="/terms-conditions">{t.footer.terms}</Link>
             </p>
           </div>
           <p className="footer-love">
