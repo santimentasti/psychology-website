@@ -1,8 +1,9 @@
 import { useMemo, useCallback } from 'react'
 import { ReactNode } from 'react'
 import { Mail, Phone, MapPin, MessageCircle, Instagram, Linkedin } from 'lucide-react'
-import { CONTACT_INFO, FAQ_DATA } from '../constants/mockData'
+import { CONTACT_INFO } from '../constants/mockData'
 import { openWhatsApp, formatPhoneNumber } from '../utils/helpers'
+import { useTranslation } from '../hooks/useTranslation'
 import './Contact.css'
 
 const ICON_SIZE = 32
@@ -24,12 +25,16 @@ interface SocialLink {
 }
 
 const Contact = () => {
+  const { t, language } = useTranslation()
+
   const handleWhatsAppClick = useCallback(() => {
     if (CONTACT_INFO.phone) {
-      const message = 'Hola, me gustaría obtener más información sobre los servicios.'
+      const message = language === 'es'
+        ? 'Hola, me gustaría obtener más información sobre los servicios.'
+        : 'Hello, I would like to get more information about the services.'
       openWhatsApp(CONTACT_INFO.phone, message)
     }
-  }, [])
+  }, [language])
 
   const handleEmailClick = useCallback(() => {
     if (CONTACT_INFO.email) {

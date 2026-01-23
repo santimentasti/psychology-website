@@ -1,8 +1,10 @@
 import { useState, useEffect, useCallback } from 'react'
 import { Link } from 'react-router-dom'
-import { Menu, X, Brain } from 'lucide-react'
+import { Menu, X, Brain, Globe } from 'lucide-react'
 import { CONTACT_INFO } from '../constants/mockData'
 import { debounce } from '../utils/helpers'
+import { useLanguage } from '../contexts/LanguageContext'
+import { useTranslation } from '../hooks/useTranslation'
 import './Header.css'
 
 const SCROLL_THRESHOLD = 50
@@ -15,6 +17,8 @@ interface NavLink {
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
   const [isScrolled, setIsScrolled] = useState<boolean>(false)
+  const { language, setLanguage } = useLanguage()
+  const { t } = useTranslation()
 
   useEffect(() => {
     const handleScroll = debounce(() => {
@@ -34,12 +38,16 @@ const Header = () => {
   }, [])
 
   const navLinks: NavLink[] = [
-    { href: '#inicio', label: 'Inicio' },
-    { href: '#sobre-mi', label: 'Sobre mí' },
-    { href: '#servicios', label: 'Servicios' },
-    { href: '#agenda', label: 'Agenda' },
-    { href: '#contacto', label: 'Contacto' }
+    { href: '#inicio', label: t.header.home },
+    { href: '#sobre-mi', label: t.header.about },
+    { href: '#servicios', label: t.header.services },
+    { href: '#agenda', label: t.header.schedule },
+    { href: '#contacto', label: t.header.contact }
   ]
+
+  const toggleLanguage = useCallback(() => {
+    setLanguage(language === 'es' ? 'en' : 'es')
+  }, [language, setLanguage])
 
   return (
     <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
@@ -53,8 +61,8 @@ const Header = () => {
           <ul className="nav-list">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <a 
-                  href={link.href} 
+                <a
+                  href={link.href}
                   className="nav-link"
                   onClick={closeMenu}
                 >
@@ -65,13 +73,25 @@ const Header = () => {
           </ul>
         </nav>
 
-        <button 
-          className="menu-toggle" 
-          onClick={toggleMenu}
-          aria-label="Toggle menu"
-        >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="header-actions">
+          <button
+            className="language-toggle"
+            onClick={toggleLanguage}
+            aria-label="Toggle language"
+            title={language === 'es' ? 'Switch to English' : 'Cambiar a Español'}
+          >
+            <Globe size={20} />
+            <span className="language-text">{language.toUpperCase()}</span>
+          </button>
+
+          <button
+            className="menu-toggle"
+            onClick={toggleMenu}
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
     </header>
   )

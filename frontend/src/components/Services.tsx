@@ -1,7 +1,8 @@
 import { ReactNode } from 'react'
 import { Brain, Users, Sparkles, ShieldCheck, Smile } from 'lucide-react'
-import { SERVICES_DATA, FIRST_CONSULTATION_PRICE, Service } from '../constants/mockData'
+import { SERVICES_DATA, Service } from '../constants/mockData'
 import { formatCurrency } from '../utils/helpers'
+import { useTranslation } from '../hooks/useTranslation'
 import './Services.css'
 
 const ICON_SIZE = 40
@@ -21,7 +22,24 @@ interface ServiceWithIcon extends Service {
 }
 
 const Services = () => {
-  const services: ServiceWithIcon[] = SERVICES_DATA.map(service => ({
+  const { t } = useTranslation()
+
+  const servicesWithTranslations = [
+    {
+      ...SERVICES_DATA[0],
+      title: t.services.individualTherapy,
+      description: t.services.individualDescription,
+      features: t.services.individualFeatures
+    },
+    {
+      ...SERVICES_DATA[1],
+      title: t.services.coupleTherapy,
+      description: t.services.coupleDescription,
+      features: t.services.coupleFeatures
+    }
+  ]
+
+  const services: ServiceWithIcon[] = servicesWithTranslations.map(service => ({
     ...service,
     icon: serviceIcons[service.id] || <Brain size={ICON_SIZE} />,
     formattedPrice: formatCurrency(service.price, service.currency)
@@ -30,9 +48,9 @@ const Services = () => {
   return (
     <section id="servicios" className="section services">
       <div className="container">
-        <h2 className="section-title">Servicios</h2>
+        <h2 className="section-title">{t.services.title}</h2>
         <p className="services-subtitle">
-          Ofrezco una variedad de servicios terapéuticos adaptados a tus necesidades específicas
+          {t.services.subtitle}
         </p>
 
         <div className="services-grid">
@@ -52,25 +70,20 @@ const Services = () => {
 
               <div className="service-footer">
                 <span className="service-price">{service.formattedPrice}</span>
-                <span className="service-session">por sesión</span>
+                <span className="service-session">{t.services.perSession}</span>
               </div>
             </article>
           ))}
         </div>
 
         <div className="services-note">
-          <h3>Modalidad de Atención</h3>
+          <h3>{t.services.modality}</h3>
           <div className="modalities">
             <div className="modality">
-              <h4>💻 En Línea</h4>
-              <p>Sesiones exclusivamente por videollamada segura - Atiendo en múltiples países</p>
+              <h4>{t.services.online}</h4>
+              <p>{t.services.onlineDescription}</p>
             </div>
           </div>
-          <p className="note-text">
-            <strong>Primera sesión:</strong> La primera consulta tiene un costo de{' '}
-            {formatCurrency(FIRST_CONSULTATION_PRICE.amount, FIRST_CONSULTATION_PRICE.currency)}{' '}
-            donde evaluaremos tu situación y estableceremos un plan de tratamiento personalizado.
-          </p>
         </div>
       </div>
     </section>

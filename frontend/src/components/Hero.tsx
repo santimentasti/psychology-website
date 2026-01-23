@@ -1,9 +1,11 @@
 import { Calendar, MessageCircle, ArrowDown } from 'lucide-react'
 import { CONTACT_INFO, PROFESSIONAL_INFO, HERO_IMAGE_URL } from '../constants/mockData'
 import { openWhatsApp, smoothScrollTo } from '../utils/helpers'
+import { useTranslation } from '../hooks/useTranslation'
 import './Hero.css'
 
 const Hero = () => {
+  const { t } = useTranslation()
   const handleWhatsAppClick = (): void => {
     const message = 'Hola, me gustaría solicitar información sobre los servicios de psicología.'
     if (CONTACT_INFO.phone) {
@@ -21,20 +23,18 @@ const Hero = () => {
       <div className="container hero-container">
         <div className="hero-content fade-in">
           <h1 className="hero-title">
-            Tu bienestar emocional es mi prioridad
+            {t.hero.title}
           </h1>
           <p className="hero-subtitle">
-            Psicólogo clínico especializado en {PROFESSIONAL_INFO.specialization.toLowerCase()}, 
-            con {PROFESSIONAL_INFO.yearsOfExperience} años de experiencia ayudando a personas a superar 
-            sus desafíos emocionales y alcanzar una vida plena.
+            {t.hero.subtitle}
           </p>
           <div className="hero-buttons">
-            <button 
+            <button
               className="btn btn-primary"
               onClick={handleScheduleClick}
             >
               <Calendar size={20} />
-              Agendar Cita
+              {t.hero.cta}
             </button>
             {CONTACT_INFO.phone && (
               <button 
@@ -49,15 +49,15 @@ const Hero = () => {
           <div className="hero-stats">
             <div className="stat">
               <span className="stat-number">{PROFESSIONAL_INFO.yearsOfExperience}</span>
-              <span className="stat-label">Años de experiencia</span>
+              <span className="stat-label">{t.about.experience}</span>
             </div>
             <div className="stat">
               <span className="stat-number">{PROFESSIONAL_INFO.patientsServed}+</span>
-              <span className="stat-label">Pacientes atendidos</span>
+              <span className="stat-label">{t.about.patients}</span>
             </div>
             <div className="stat">
-              <span className="stat-number">{PROFESSIONAL_INFO.sessionsCompleted.toLocaleString('es-AR')}+</span>
-              <span className="stat-label">Sesiones realizadas</span>
+              <span className="stat-number">{PROFESSIONAL_INFO.sessionsCompleted.toLocaleString()}+</span>
+              <span className="stat-label">{t.about.sessions}</span>
             </div>
           </div>
         </div>

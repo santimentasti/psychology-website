@@ -101,8 +101,8 @@ export const AVAILABLE_SCHEDULE: Record<string, string[]> = {
 
 // First Consultation Price
 export const FIRST_CONSULTATION_PRICE = {
-  amount: 700,
-  currency: 'ARS'
+  amount: 50,
+  currency: 'USD'
 }
 
 // FAQ Data
