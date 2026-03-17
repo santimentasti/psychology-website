@@ -6,6 +6,7 @@ import Booking from '../components/Booking'
 import Contact from '../components/Contact'
 import Footer from '../components/Footer'
 import GlobalTherapySection from '../components/GlobalTherapySection'
+import Testimonials from '../components/Testimonials'
 import { useTranslation } from '../hooks/useTranslation'
 import SeoHead from '../seo/SeoHead'
 import { ROUTE_SEO_CONFIG } from '../seo/seoConfig'
@@ -33,6 +34,7 @@ const HomePage = () => {
         <Hero />
         <About />
         <Services />
+        <Testimonials />
         <GlobalTherapySection />
         <Booking />
         <Contact />

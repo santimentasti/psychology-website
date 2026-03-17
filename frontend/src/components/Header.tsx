@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback } from 'react'
 import { Link } from 'react-router-dom'
-import { Menu, X, Brain, Globe } from 'lucide-react'
+import { Menu, X, Brain, Globe, Calendar } from 'lucide-react'
 import { CONTACT_INFO } from '../constants/mockData'
-import { debounce } from '../utils/helpers'
+import { debounce, smoothScrollTo } from '../utils/helpers'
 import { useLanguage } from '../contexts/LanguageContext'
 import { useTranslation } from '../hooks/useTranslation'
 import './Header.css'
@@ -36,6 +36,11 @@ const Header = () => {
   const closeMenu = useCallback(() => {
     setIsMenuOpen(false)
   }, [])
+
+  const handleBookClick = useCallback(() => {
+    closeMenu()
+    smoothScrollTo('agenda')
+  }, [closeMenu])
 
   const navLinks: NavLink[] = [
     { href: '#inicio', label: t.header.home },
@@ -71,9 +76,28 @@ const Header = () => {
               </li>
             ))}
           </ul>
+          <button
+            type="button"
+            className="btn btn-primary nav-book-cta"
+            onClick={handleBookClick}
+            aria-label={t.header.bookCta}
+          >
+            <Calendar size={16} />
+            {t.header.bookCta}
+          </button>
         </nav>
 
         <div className="header-actions">
+          <button
+            type="button"
+            className="btn btn-primary header-book-cta"
+            onClick={handleBookClick}
+            aria-label={t.header.bookCta}
+          >
+            <Calendar size={16} />
+            {t.header.bookCta}
+          </button>
+
           <button
             type="button"
             className="language-toggle"

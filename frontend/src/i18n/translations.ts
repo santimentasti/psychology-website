@@ -6,7 +6,8 @@ export const translations = {
       about: 'Sobre mí',
       services: 'Servicios',
       schedule: 'Agenda',
-      contact: 'Contacto'
+      contact: 'Contacto',
+      bookCta: 'Agendar consulta'
     },
     // Hero
     hero: {
@@ -71,6 +72,40 @@ export const translations = {
       ctaBarSubtitle: 'Escribime y lo charlamos. Sin compromiso.',
       ctaBarButton: 'Consultar por WhatsApp'
     },
+    // Testimonials
+    testimonials: {
+      title: 'Lo que dicen mis pacientes',
+      subtitle: 'Más de 500 personas ya eligieron dar el primer paso',
+      ratingLabel: '4.9 promedio · +500 pacientes',
+      disclaimer: 'Testimonios de pacientes reales. Nombres abreviados para proteger la privacidad.',
+      items: [
+        {
+          id: 't1',
+          quote: 'Llegué con ataques de pánico que me impedían trabajar. En cuatro meses aprendí herramientas concretas para manejarlos. Hoy vivo de otra manera.',
+          service: 'Terapia Individual'
+        },
+        {
+          id: 't2',
+          quote: 'Mi pareja y yo estábamos en un punto sin retorno. Las sesiones nos dieron un espacio para escucharnos de verdad. Seguimos juntos y mucho mejor.',
+          service: 'Terapia de Pareja'
+        },
+        {
+          id: 't3',
+          quote: 'Dudé mucho de si el formato online podía funcionar. Me equivoqué — estar en casa me dio más libertad para abrirme. Los resultados fueron reales.',
+          service: 'Terapia Individual'
+        },
+        {
+          id: 't4',
+          quote: 'I was looking for a therapist who works in English and truly understands both cultures. The sessions feel completely natural. Best decision I made.',
+          service: 'Individual Therapy'
+        },
+        {
+          id: 't5',
+          quote: 'Empecé por ansiedad laboral y terminé entendiendo patrones de mí mismo que tenía enterrados hace años. Un proceso que recomendaría a cualquiera.',
+          service: 'Terapia Individual'
+        }
+      ]
+    },
     // Booking
     booking: {
       title: 'Agenda tu Consulta',
@@ -121,7 +156,8 @@ export const translations = {
       about: 'About Me',
       services: 'Services',
       schedule: 'Schedule',
-      contact: 'Contact'
+      contact: 'Contact',
+      bookCta: 'Book a session'
     },
     // Hero
     hero: {
@@ -185,6 +221,40 @@ export const translations = {
       ctaBarTitle: 'Not sure which service is right for you?',
       ctaBarSubtitle: 'Send me a message and we\'ll figure it out together. No commitment.',
       ctaBarButton: 'Ask on WhatsApp'
+    },
+    // Testimonials
+    testimonials: {
+      title: 'What my patients say',
+      subtitle: 'Over 500 people have already taken the first step',
+      ratingLabel: '4.9 average · 500+ patients',
+      disclaimer: 'From real patients. Names abbreviated to protect privacy.',
+      items: [
+        {
+          id: 't1',
+          quote: 'I arrived with panic attacks that were affecting my work. In four months I learned real tools to manage them. Today I live differently.',
+          service: 'Individual Therapy'
+        },
+        {
+          id: 't2',
+          quote: 'My partner and I were at a breaking point. The sessions gave us a real space to listen to each other. We\'re still together and so much better.',
+          service: 'Couple Therapy'
+        },
+        {
+          id: 't3',
+          quote: 'I was very skeptical about whether online therapy could work. I was wrong — being at home gave me more freedom to open up. The results were real.',
+          service: 'Individual Therapy'
+        },
+        {
+          id: 't4',
+          quote: 'I was looking for a therapist who works in English and truly understands both cultures. The sessions feel completely natural. Best decision I made.',
+          service: 'Individual Therapy'
+        },
+        {
+          id: 't5',
+          quote: 'I started for work anxiety and ended up understanding patterns in myself that I\'d buried for years. A process I\'d recommend to anyone.',
+          service: 'Individual Therapy'
+        }
+      ]
     },
     // Booking
     booking: {

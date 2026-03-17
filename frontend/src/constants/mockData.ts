@@ -46,6 +46,13 @@ export interface FAQ {
   answer: string
 }
 
+export interface Testimonial {
+  id: string
+  initials: string
+  location: string
+  rating: number
+}
+
 // Contact Information
 export const CONTACT_INFO: ContactInfo = {
   psychologistName: 'Lic. Matías Munno',
@@ -119,6 +126,15 @@ export const FAQ_DATA: FAQ[] = [
 // Public ID: matias-munno-portrait
 // Original dimensions: 960 × 1280
 export const HERO_IMAGE_URL = import.meta.env.VITE_HERO_IMAGE_URL || 'https://res.cloudinary.com/drv3s51ks/image/upload/w_500,h_600,c_fill,q_auto,f_auto/matias-munno-portrait'
+
+// Testimonials — initials + location only (quotes live in translations.ts)
+export const TESTIMONIALS_DATA: Testimonial[] = [
+  { id: 't1', initials: 'M.L.', location: 'Buenos Aires, Argentina', rating: 5 },
+  { id: 't2', initials: 'R. y S.K.', location: 'Madrid, España', rating: 5 },
+  { id: 't3', initials: 'A.P.', location: 'Montevideo, Uruguay', rating: 5 },
+  { id: 't4', initials: 'J.T.', location: 'Berlin, Germany', rating: 5 },
+  { id: 't5', initials: 'C.M.', location: 'Córdoba, Argentina', rating: 5 },
+]
 
 // Patient Locations
 export const PATIENT_LOCATIONS = [
