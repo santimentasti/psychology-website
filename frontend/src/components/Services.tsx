@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
-import { Brain, Users, Sparkles, ShieldCheck, Smile } from 'lucide-react'
-import { SERVICES_DATA, Service } from '../constants/mockData'
-import { formatCurrency } from '../utils/helpers'
+import { Brain, Users, Sparkles, ShieldCheck, Smile, Calendar, MessageCircle } from 'lucide-react'
+import { SERVICES_DATA, CONTACT_INFO, Service } from '../constants/mockData'
+import { formatCurrency, smoothScrollTo, openWhatsApp } from '../utils/helpers'
 import { useTranslation } from '../hooks/useTranslation'
 import './Services.css'
 
@@ -23,6 +23,17 @@ interface ServiceWithIcon extends Service {
 
 const Services = () => {
   const { t } = useTranslation()
+
+  const handleBookService = (): void => {
+    smoothScrollTo('agenda')
+  }
+
+  const handleWhatsAppQuery = (): void => {
+    const message = t.services.ctaBarButton
+    if (CONTACT_INFO.phone) {
+      openWhatsApp(CONTACT_INFO.phone, message)
+    }
+  }
 
   const servicesWithTranslations = [
     {
@@ -61,7 +72,7 @@ const Services = () => {
               </div>
               <h3 className="service-title">{service.title}</h3>
               <p className="service-description">{service.description}</p>
-              
+
               <ul className="service-features">
                 {service.features.map((feature) => (
                   <li key={`${service.id}-${feature}`}>{feature}</li>
@@ -69,21 +80,37 @@ const Services = () => {
               </ul>
 
               <div className="service-footer">
-                <span className="service-price">{service.formattedPrice}</span>
-                <span className="service-session">{t.services.perSession}</span>
+                <div className="service-pricing">
+                  <span className="service-price">{service.formattedPrice}</span>
+                  <span className="service-session">{t.services.perSession}</span>
+                </div>
+                <button
+                  type="button"
+                  className="btn btn-primary service-cta"
+                  onClick={handleBookService}
+                  aria-label={`${t.services.bookService} — ${service.title}`}
+                >
+                  <Calendar size={16} />
+                  {t.services.bookService}
+                </button>
               </div>
             </article>
           ))}
         </div>
 
-        <div className="services-note">
-          <h3>{t.services.modality}</h3>
-          <div className="modalities">
-            <div className="modality">
-              <h4>{t.services.online}</h4>
-              <p>{t.services.onlineDescription}</p>
-            </div>
+        <div className="services-cta-bar">
+          <div className="cta-bar-content">
+            <p className="cta-bar-title">{t.services.ctaBarTitle}</p>
+            <p className="cta-bar-subtitle">{t.services.ctaBarSubtitle}</p>
           </div>
+          <button
+            type="button"
+            className="btn btn-whatsapp"
+            onClick={handleWhatsAppQuery}
+          >
+            <MessageCircle size={18} />
+            {t.services.ctaBarButton}
+          </button>
         </div>
       </div>
     </section>

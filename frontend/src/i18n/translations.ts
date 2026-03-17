@@ -55,17 +55,21 @@ export const translations = {
     // Services
     services: {
       title: 'Servicios',
-      subtitle: 'Ofrezco una variedad de servicios terapéuticos adaptados a tus necesidades específicas',
+      subtitle: 'Sesiones online en español e inglés, adaptadas a tus necesidades',
       perSession: 'por sesión',
+      bookService: 'Agendar esta sesión',
       modality: 'Modalidad de Atención',
       online: '💻 En Línea',
       onlineDescription: 'Sesiones exclusivamente por videollamada segura - Atiendo en múltiples países',
       individualTherapy: 'Terapia Individual',
-      individualDescription: 'Sesiones personalizadas para trabajar en tus desafíos emocionales, ansiedad, depresión, o cualquier situación que afecte tu bienestar.',
+      individualDescription: 'Trabajamos juntos en ansiedad, estrés, autoestima o cualquier situación que hoy te esté pesando. A tu ritmo, sin juicios.',
       individualFeatures: ['Sesiones de 50 minutos', 'Plan personalizado', 'Seguimiento continuo'],
       coupleTherapy: 'Terapia de Pareja',
-      coupleDescription: 'Espacio para fortalecer la relación, mejorar la comunicación y resolver conflictos de pareja en un entorno seguro y profesional.',
-      coupleFeatures: ['Sesiones de 60 minutos', 'Ambos integrantes', 'Técnicas terapéuticas cognitivo conductuales']
+      coupleDescription: 'Un espacio neutral para mejorar la comunicación, resolver conflictos recurrentes y reconectar con tu pareja.',
+      coupleFeatures: ['Sesiones de 60 minutos', 'Ambos integrantes', 'Técnicas cognitivo conductuales'],
+      ctaBarTitle: '¿Tenés dudas sobre qué servicio es el adecuado para vos?',
+      ctaBarSubtitle: 'Escribime y lo charlamos. Sin compromiso.',
+      ctaBarButton: 'Consultar por WhatsApp'
     },
     // Booking
     booking: {
@@ -166,17 +170,21 @@ export const translations = {
     // Services
     services: {
       title: 'Services',
-      subtitle: 'I offer a variety of therapeutic services tailored to your specific needs',
+      subtitle: 'Online sessions in English and Spanish, tailored to your needs',
       perSession: 'per session',
+      bookService: 'Book this session',
       modality: 'Service Modality',
       online: '💻 Online',
       onlineDescription: 'Sessions exclusively via secure video call - I serve patients in multiple countries',
       individualTherapy: 'Individual Therapy',
-      individualDescription: 'Personalized sessions to work on your emotional challenges, anxiety, depression, or any situation affecting your wellbeing.',
+      individualDescription: 'We work together on anxiety, stress, self-esteem, or anything that\'s weighing on you right now. At your pace, without judgment.',
       individualFeatures: ['50-minute sessions', 'Personalized plan', 'Continuous follow-up'],
       coupleTherapy: 'Couple Therapy',
-      coupleDescription: 'Space to strengthen the relationship, improve communication and resolve couple conflicts in a safe and professional environment.',
-      coupleFeatures: ['60-minute sessions', 'Both partners', 'Cognitive behavioral therapeutic techniques']
+      coupleDescription: 'A neutral space to improve communication, resolve recurring conflicts, and reconnect with your partner.',
+      coupleFeatures: ['60-minute sessions', 'Both partners', 'Cognitive behavioral techniques'],
+      ctaBarTitle: 'Not sure which service is right for you?',
+      ctaBarSubtitle: 'Send me a message and we\'ll figure it out together. No commitment.',
+      ctaBarButton: 'Ask on WhatsApp'
     },
     // Booking
     booking: {
