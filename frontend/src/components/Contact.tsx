@@ -13,7 +13,8 @@ interface ContactMethod {
   title: string
   content: string
   description: string
-  action: () => void
+  action?: () => void
+  actionLabel?: string
   color: string
 }
 
@@ -58,6 +59,7 @@ const Contact = () => {
         content: formatPhoneNumber(CONTACT_INFO.phone),
         description: t.contact.quickResponse,
         action: handleWhatsAppClick,
+        actionLabel: t.contact.whatsapp,
         color: '#25d366'
       }, {
         icon: <Phone size={ICON_SIZE} />,
@@ -65,6 +67,7 @@ const Contact = () => {
         content: formatPhoneNumber(CONTACT_INFO.phone),
         description: t.contact.callsAvailable,
         action: handlePhoneClick,
+        actionLabel: t.contact.phone,
         color: '#4a90a4'
       })
     }
@@ -76,6 +79,7 @@ const Contact = () => {
         content: CONTACT_INFO.email,
         description: t.contact.responseIn24Hours,
         action: handleEmailClick,
+        actionLabel: t.contact.email,
         color: '#5eb3cc'
       })
     }
@@ -86,7 +90,6 @@ const Contact = () => {
         title: t.contact.location,
         content: CONTACT_INFO.addressShort,
         description: t.contact.onlineConsultations,
-        action: () => {},
         color: '#90c9db'
       })
     }
@@ -127,21 +130,43 @@ const Contact = () => {
         </p>
 
         <div className="contact-grid">
-          {contactMethods.map((method, index) => (
-            <div 
-              key={index} 
-              className="contact-card card"
-              onClick={method.action}
-              style={{ '--card-color': method.color } as React.CSSProperties}
-            >
-              <div className="contact-icon">
-                {method.icon}
-              </div>
-              <h3 className="contact-title">{method.title}</h3>
-              <p className="contact-content">{method.content}</p>
-              <p className="contact-description">{method.description}</p>
-            </div>
-          ))}
+          {contactMethods.map((method) => {
+            const commonContent = (
+              <>
+                <div className="contact-icon">
+                  {method.icon}
+                </div>
+                <h3 className="contact-title">{method.title}</h3>
+                <p className="contact-content">{method.content}</p>
+                <p className="contact-description">{method.description}</p>
+              </>
+            )
+
+            if (!method.action) {
+              return (
+                <article
+                  key={method.title}
+                  className="contact-card card"
+                  style={{ '--card-color': method.color } as React.CSSProperties}
+                >
+                  {commonContent}
+                </article>
+              )
+            }
+
+            return (
+              <button
+                key={method.title}
+                type="button"
+                className="contact-card card"
+                onClick={method.action}
+                style={{ '--card-color': method.color } as React.CSSProperties}
+                aria-label={method.actionLabel}
+              >
+                {commonContent}
+              </button>
+            )
+          })}
         </div>
 
         <div className="contact-extra">
@@ -152,13 +177,14 @@ const Contact = () => {
                 Comparto contenido sobre salud mental, consejos y recursos útiles
               </p>
               <div className="social-links">
-                {socialLinks.map((social, index) => (
+                {socialLinks.map((social) => (
                   <a 
-                    key={index}
+                    key={social.name}
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="social-link"
+                    aria-label={`Visitar ${social.name}`}
                   >
                     <div className="social-icon">{social.icon}</div>
                     <div className="social-info">
@@ -173,8 +199,8 @@ const Contact = () => {
 
           <div className="faq-section card">
             <h3>{t.contact.faq}</h3>
-            {t.contact.faqItems.map((faq, index) => (
-              <div key={index} className="faq-item">
+            {t.contact.faqItems.map((faq) => (
+              <div key={faq.question} className="faq-item">
                 <h4>{faq.question}</h4>
                 <p>{faq.answer}</p>
               </div>
@@ -189,7 +215,7 @@ const Contact = () => {
             camino hacia el bienestar emocional.
           </p>
           {CONTACT_INFO.phone && (
-            <button className="btn btn-primary" onClick={handleWhatsAppClick}>
+            <button type="button" className="btn btn-primary" onClick={handleWhatsAppClick} aria-label="Contactar por WhatsApp ahora">
               <MessageCircle size={20} />
               Contactar ahora
             </button>

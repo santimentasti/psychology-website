@@ -73,8 +73,8 @@ const Footer = () => {
           <div className="footer-col">
             <h4 className="footer-title">{t.services.title}</h4>
             <ul className="footer-links">
-              {footerLinks.servicios.map((link, index) => (
-                <li key={index}>
+              {footerLinks.servicios.map((link) => (
+                <li key={`${link.href}-${link.label}`}>
                   <a href={link.href}>{link.label}</a>
                 </li>
               ))}
@@ -84,8 +84,8 @@ const Footer = () => {
           <div className="footer-col">
             <h4 className="footer-title">{t.footer.navigation}</h4>
             <ul className="footer-links">
-              {footerLinks.recursos.map((link, index) => (
-                <li key={index}>
+              {footerLinks.recursos.map((link) => (
+                <li key={`${link.href}-${link.label}`}>
                   <a href={link.href}>{link.label}</a>
                 </li>
               ))}

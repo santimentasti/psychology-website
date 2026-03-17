@@ -63,8 +63,8 @@ const Services = () => {
               <p className="service-description">{service.description}</p>
               
               <ul className="service-features">
-                {service.features.map((feature, featureIndex) => (
-                  <li key={featureIndex}>{feature}</li>
+                {service.features.map((feature) => (
+                  <li key={`${service.id}-${feature}`}>{feature}</li>
                 ))}
               </ul>
 

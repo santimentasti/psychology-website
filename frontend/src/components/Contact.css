@@ -19,10 +19,18 @@
 
 .contact-card {
   text-align: center;
-  cursor: pointer;
+  cursor: default;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  border: none;
+  width: 100%;
+  font: inherit;
+  background: var(--bg-white);
+}
+
+button.contact-card {
+  cursor: pointer;
 }
 
 .contact-card::before {
@@ -44,6 +52,11 @@
 .contact-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.contact-card:focus-visible {
+  outline: 3px solid var(--secondary-color);
+  outline-offset: 2px;
 }
 
 .contact-icon {

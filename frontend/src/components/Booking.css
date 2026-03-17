@@ -1,0 +1,69 @@
+.booking-section {
+  background: var(--bg-light);
+}
+
+.booking-subtitle {
+  text-align: center;
+  font-size: 1.125rem;
+  color: var(--text-light);
+  max-width: 600px;
+  margin: -2rem auto 3rem;
+}
+
+/* Calendly widget wrapper */
+.booking-widget-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  background: var(--bg-white);
+}
+
+.calendly-inline-widget {
+  width: 100%;
+}
+
+/* Placeholder shown when CALENDLY_URL is not yet configured */
+.booking-placeholder {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.placeholder-inner {
+  background: var(--bg-white);
+  border: 2px dashed var(--border-color);
+  border-radius: 16px;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.placeholder-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.placeholder-text {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 0.75rem;
+}
+
+.placeholder-subtext {
+  color: var(--text-light);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .booking-widget-wrapper {
+    border-radius: 12px;
+  }
+
+  .booking-subtitle {
+    font-size: 1rem;
+  }
+}

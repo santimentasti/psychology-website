@@ -1,32 +1,17 @@
 {
-  "name": "psychology-website-monorepo",
+  "name": "psychology-website",
   "version": "1.0.0",
   "private": true,
-  "description": "Monorepo for Psychology Practice Website - Frontend and Backend",
+  "description": "Psychology Practice Website — static frontend",
   "workspaces": [
-    "frontend",
-    "backend",
-    "shared"
+    "frontend"
   ],
   "scripts": {
     "dev": "npm run dev --workspace=frontend",
-    "dev:backend": "npm run dev --workspace=backend",
-    "dev:all": "npm run dev --workspace=frontend & npm run dev --workspace=backend",
-    "build": "npm run build --workspaces",
-    "build:prod": "npm install --include=optional && npm run build",
-    "postinstall": "npm run build:backend",
-    "build:frontend": "npm run build --workspace=frontend",
-    "build:backend": "npm run build --workspace=backend",
-    "install:all": "npm install",
-    "type-check": "npm run type-check --workspaces",
-    "migrate:prod": "npx prisma migrate deploy --schema=backend/prisma/schema.prisma"
+    "build": "npm run build --workspace=frontend",
+    "preview": "npm run preview --workspace=frontend"
   },
-  "keywords": [
-    "monorepo",
-    "react",
-    "express",
-    "typescript"
-  ],
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "engines": {
@@ -36,8 +21,5 @@
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "*",
     "@rollup/rollup-linux-x64-musl": "*"
-  },
-  "devDependencies": {
-    "@types/paypal__checkout-server-sdk": "^1.0.8"
   }
 }

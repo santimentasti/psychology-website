@@ -10,9 +10,10 @@ export const translations = {
     },
     // Hero
     hero: {
-      title: 'Bienvenido a tu espacio de bienestar emocional',
-      subtitle: 'Psicólogo especializado en terapia cognitivo conductual. Te acompaño en tu proceso de crecimiento personal y bienestar emocional.',
-      cta: 'Agenda tu consulta'
+      title: 'Recuperá la calma con terapia online',
+      subtitle: 'Atención en español e inglés para personas que quieren superar la ansiedad, el estrés o los problemas de pareja — desde cualquier parte del mundo.',
+      cta: 'Agendar mi consulta',
+      trustLine: 'Sin compromiso · Confidencial · Respuesta en 24 hs'
     },
     // About
     about: {
@@ -66,16 +67,12 @@ export const translations = {
       coupleDescription: 'Espacio para fortalecer la relación, mejorar la comunicación y resolver conflictos de pareja en un entorno seguro y profesional.',
       coupleFeatures: ['Sesiones de 60 minutos', 'Ambos integrantes', 'Técnicas terapéuticas cognitivo conductuales']
     },
-    // Calendar
-    calendar: {
+    // Booking
+    booking: {
       title: 'Agenda tu Consulta',
-      subtitle: 'Selecciona el día y horario que mejor se adapte a tus necesidades',
-      selectDate: 'Selecciona una fecha',
-      selectTime: 'Selecciona un horario',
-      availableSlots: 'Horarios disponibles',
-      noSlots: 'No hay horarios disponibles para este día',
-      confirm: 'Confirmar cita',
-      selectDateFirst: 'Selecciona una fecha primero'
+      subtitle: 'Elige el día y el horario que mejor se adapten a tu rutina. Recibirás confirmación inmediata.',
+      configPending: 'El calendario estará disponible en breve.',
+      whatsappFallback: 'Mientras tanto, podés escribirme por WhatsApp para coordinar tu turno.'
     },
     // Contact
     contact: {
@@ -124,9 +121,10 @@ export const translations = {
     },
     // Hero
     hero: {
-      title: 'Welcome to your emotional wellness space',
-      subtitle: 'Psychologist specialized in cognitive behavioral therapy. I accompany you in your personal growth and emotional wellbeing process.',
-      cta: 'Schedule your consultation'
+      title: 'Feel like yourself again.',
+      subtitle: 'Online therapy in English and Spanish for anxiety, stress, and relationship challenges — from anywhere in the world.',
+      cta: 'Book my session',
+      trustLine: 'No commitment · Private & confidential · Response within 24 hours'
     },
     // About
     about: {
@@ -180,16 +178,12 @@ export const translations = {
       coupleDescription: 'Space to strengthen the relationship, improve communication and resolve couple conflicts in a safe and professional environment.',
       coupleFeatures: ['60-minute sessions', 'Both partners', 'Cognitive behavioral therapeutic techniques']
     },
-    // Calendar
-    calendar: {
-      title: 'Schedule Your Consultation',
-      subtitle: 'Select the day and time that best suits your needs',
-      selectDate: 'Select a date',
-      selectTime: 'Select a time',
-      availableSlots: 'Available times',
-      noSlots: 'No times available for this day',
-      confirm: 'Confirm appointment',
-      selectDateFirst: 'Select a date first'
+    // Booking
+    booking: {
+      title: 'Book Your Session',
+      subtitle: 'Pick the day and time that works for you. You\'ll receive instant confirmation.',
+      configPending: 'The booking calendar will be available shortly.',
+      whatsappFallback: 'In the meantime, message me on WhatsApp to schedule your appointment.'
     },
     // Contact
     contact: {

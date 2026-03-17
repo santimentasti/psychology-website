@@ -121,9 +121,11 @@ const Calendar = () => {
             )}
 
             <button 
+              type="button"
               className="btn btn-whatsapp booking-btn"
               onClick={handleBooking}
               disabled={!selectedDate || !selectedTime || !CONTACT_INFO.phone}
+              aria-label="Confirmar turno por WhatsApp"
             >
               <MessageCircle size={20} />
               Confirmar por WhatsApp

@@ -89,15 +89,9 @@ export const SERVICES_DATA: Service[] = [
   }
 ]
 
-// Available Schedule - Days and time slots
-export const AVAILABLE_SCHEDULE: Record<string, string[]> = {
-  'Lunes': ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00', '17:00'],
-  'Martes': ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00', '17:00'],
-  'Miércoles': ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00'],
-  'Jueves': ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00', '17:00'],
-  'Viernes': ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00'],
-  'Sábado': ['10:00', '11:00', '12:00']
-}
+// Calendly booking URL
+// Set VITE_CALENDLY_URL in your .env file (e.g. https://calendly.com/your-handle)
+export const CALENDLY_URL = import.meta.env.VITE_CALENDLY_URL || ''
 
 // First Consultation Price
 export const FIRST_CONSULTATION_PRICE = {
@@ -125,9 +119,6 @@ export const FAQ_DATA: FAQ[] = [
 // Public ID: matias-munno-portrait
 // Original dimensions: 960 × 1280
 export const HERO_IMAGE_URL = import.meta.env.VITE_HERO_IMAGE_URL || 'https://res.cloudinary.com/drv3s51ks/image/upload/w_500,h_600,c_fill,q_auto,f_auto/matias-munno-portrait'
-
-// Cancellation Policy
-export const CANCELLATION_POLICY = 'Si necesitas cancelar o reprogramar tu cita, por favor avísanos con al menos 24 horas de anticipación.'
 
 // Patient Locations
 export const PATIENT_LOCATIONS = [

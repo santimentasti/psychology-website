@@ -1,0 +1,12 @@
+.global-therapy-section {
+  background: var(--bg-white);
+  padding-top: 2rem;
+}
+
+.global-therapy-description {
+  max-width: 900px;
+  margin: 0 auto 1.25rem;
+  text-align: center;
+  font-size: 1.0625rem;
+  line-height: 1.8;
+}

@@ -79,8 +79,8 @@ const About = () => {
               </div>
               <h3 className="qualification-title">{qual.title}</h3>
               <ul className="qualification-list">
-                {qual.items.map((item, itemIndex) => (
-                  <li key={itemIndex}>{item}</li>
+                {qual.items.map((item) => (
+                  <li key={`${qual.title}-${item}`}>{item}</li>
                 ))}
               </ul>
             </article>

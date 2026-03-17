@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+>
+  <url>
+    <loc>https://matiasmunno.com/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://matiasmunno.com/?lang=es" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://matiasmunno.com/?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matiasmunno.com/?lang=es" />
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://matiasmunno.com/privacy-policy</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://matiasmunno.com/privacy-policy?lang=es" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://matiasmunno.com/privacy-policy?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matiasmunno.com/privacy-policy?lang=es" />
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://matiasmunno.com/terms-conditions</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://matiasmunno.com/terms-conditions?lang=es" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://matiasmunno.com/terms-conditions?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://matiasmunno.com/terms-conditions?lang=es" />
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+</urlset>

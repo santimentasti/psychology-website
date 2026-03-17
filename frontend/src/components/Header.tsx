@@ -57,7 +57,7 @@ const Header = () => {
           <span className="logo-text">{CONTACT_INFO.psychologistName}</span>
         </Link>
 
-        <nav className={`nav ${isMenuOpen ? 'open' : ''}`}>
+        <nav className={`nav ${isMenuOpen ? 'open' : ''}`} aria-label="Navegacion principal">
           <ul className="nav-list">
             {navLinks.map((link) => (
               <li key={link.href}>
@@ -75,6 +75,7 @@ const Header = () => {
 
         <div className="header-actions">
           <button
+            type="button"
             className="language-toggle"
             onClick={toggleLanguage}
             aria-label="Toggle language"
@@ -85,9 +86,11 @@ const Header = () => {
           </button>
 
           <button
+            type="button"
             className="menu-toggle"
             onClick={toggleMenu}
             aria-label="Toggle menu"
+            aria-expanded={isMenuOpen}
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
