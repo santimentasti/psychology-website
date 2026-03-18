@@ -1,5 +1,9 @@
 export const translations = {
   es: {
+    // Site-wide
+    site: {
+      tagline: 'Terapia Online en Español e Inglés para Todo el Mundo'
+    },
     // Header
     header: {
       home: 'Inicio',
@@ -150,6 +154,10 @@ export const translations = {
     }
   },
   en: {
+    // Site-wide
+    site: {
+      tagline: 'Online Therapy for Spanish and English Speakers Worldwide'
+    },
     // Header
     header: {
       home: 'Home',
